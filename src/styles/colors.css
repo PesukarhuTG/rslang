@@ -1,0 +1,27 @@
+:root {
+  --main-background: #141F23;
+  --card-background: #0D171B;
+  --game-background: #0D171B;
+  --primary: #94D53D;
+  --primary-light: #fff;
+  --primary-dark: #000;
+
+  --language-level-1: #94D53D;
+  --language-level-2: #D3F300;
+  --language-level-3: #2BF8AE;
+  --language-level-4: #394AF5;
+  --language-level-5: #3FCBFF;
+  --language-level-6: #B039F5;
+  --language-level-7: #F53E94;
+
+  --btn-primary: #94D53D;
+  --btn-dark: #141F23;
+  --btn-primary-hover: #6CA322;
+  --btn-wrong-hover: #C21E6B;
+
+  --answer-right: #94D53D;
+  --answer-wrong: #F53E94;
+
+  --icon-learned: #94D53D;
+  --icon-difficult: #F53E94;
+}

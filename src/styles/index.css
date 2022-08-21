@@ -1,0 +1,48 @@
+@import './colors.css';
+
+@font-face {
+  font-family: "OpenSans-Regular";
+  src: url("../../assets/fonts/OpenSans-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "OpenSans-Bold";
+  src: url("../../assets/fonts/OpenSans-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "OpenSans-BoldItalic";
+  src: url("../../assets/fonts/OpenSans-BoldItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "OpenSans-Italic";
+  src: url("../../assets/fonts/OpenSans-Italic.ttf") format("truetype");
+}
+
+*,
+* ::before,
+* ::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0 40px;
+  font-family: "OpenSans", sans-serif;
+  font-size: 26px;
+  color: var(--primary-light);
+  background-color: var(--main-background);
+}
+
+input,
+textarea,
+select {
+  color: var(--primary-dark);
+}
+
+a {
+  color: var(--primary-light);
+  text-decoration: none;
+}
