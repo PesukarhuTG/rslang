@@ -1,0 +1,1 @@
+export const DictionaryPage = () => <p className="headling">dictionary page</p>
