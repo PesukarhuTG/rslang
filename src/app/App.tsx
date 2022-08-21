@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { MainPage } from '../pages/main';
-import { DictionaryPage } from '../pages/dictionary';
+import { TextBookPage } from '../pages/textbook';
 import { SprintPage } from '../pages/sprint';
 import { AudioPage } from '../pages/audioCall';
 import { StatisticPage } from '../pages/statistic';
@@ -13,7 +13,7 @@ function App() {
   return (
     <Routes>
       <Route path='/' element = {<MainPage/>}/>
-      <Route path='/dictionary' element = {<DictionaryPage/>}/>
+      <Route path='/textbook' element = {<TextBookPage/>}/>
       <Route path='/sprint' element = {<SprintPage/>}/>
       <Route path='/audiocall' element = {<AudioPage/>}/>
       <Route path='/statistic' element = {<StatisticPage/>}/>
