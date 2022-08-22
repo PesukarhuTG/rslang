@@ -1,0 +1,1 @@
+export const StatisticPage = () => <p className="headling">Statistic page</p>

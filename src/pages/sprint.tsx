@@ -1,0 +1,1 @@
+export const SprintPage = () => <p className="headling">Sprint page</p>

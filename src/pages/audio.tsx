@@ -1,0 +1,1 @@
+export const AudioPage = () => <p className="headling">AudioCall page</p>
