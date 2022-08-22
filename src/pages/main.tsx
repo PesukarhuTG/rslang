@@ -1,11 +1,16 @@
-export const MainPage = () => {
+import { Layout } from "../components";
+
+const MainPage = () => {
 	return (
     <div className="App">
-      <header className="App-header">
+      <Layout></Layout>
+      {/* <header className="App-header">
         <p className="headling">
           Здесь будет наш проект RSLang
         </p>
-      </header>
+      </header> */}
     </div>
 	)
 }
+
+export default MainPage

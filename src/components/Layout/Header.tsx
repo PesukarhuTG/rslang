@@ -1,7 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
-import '../../styles/style.css';
 import headerBtnIco from '../../assets/svg/header-btn-ico.svg'
+import { Link } from 'react-router-dom';
+
+const Header = () => {
+  return (
+    <AppHeader>
+        <HeaderLogo to="/">
+          RSS Lang
+        </HeaderLogo>
+        <HeaderNav>
+          <Link to="/textbook">Учебник</Link>
+          <Link to="/sprint">Спринт</Link>
+          <Link to="/audio">Аудиовызов</Link>
+          <Link to="/statistic">Статистика</Link>
+        </HeaderNav>
+        <HeaderBtn>
+          Гость
+        </HeaderBtn>
+      </AppHeader>
+  )
+}
 
 const AppHeader = styled.header`
   height: 170px;
@@ -11,7 +30,7 @@ const AppHeader = styled.header`
   gap: 40px;
 `;
 
-const HeaderLogo = styled.div`
+const HeaderLogo = styled(Link)`
   color: var(--primary);
   font-family: 'Open Sans';
   font-weight: 800;
@@ -35,30 +54,5 @@ const HeaderBtn = styled.button`
   font-family: 'Open Sans';
   font-size: 26px;
 `;
-
-function Header() {
-  return (
-    <div className="container">
-      <AppHeader>
-      <HeaderLogo>
-        RSS Lang
-      </HeaderLogo>
-      <HeaderNav>
-        <span>Учебник</span>
-        <span>Спринт</span>
-        <span>Аудиовызов</span>
-        <span>Статистика</span>
-        {/* <Link to="/textbook">Учебник</Link>
-        <Link to="/sprint">Спринт</Link>
-        <Link to="/audio">Аудиовызов</Link>
-        <Link to="/statistics">Статистика</Link> */}
-        </HeaderNav>
-        <HeaderBtn>
-          Гость
-        </HeaderBtn>
-      </AppHeader>
-    </div>
-  )
-}
 
 export default Header;
