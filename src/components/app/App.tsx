@@ -1,14 +1,10 @@
 import React from 'react';
+import Header from '../header/Header';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p className="headling">
-          Здесь будет наш проект RSLang
-        </p>
-
-      </header>
+      <Header />
     </div>
   );
 }
