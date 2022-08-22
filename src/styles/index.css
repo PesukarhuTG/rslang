@@ -29,7 +29,10 @@
 }
 
 body {
-  padding: 0 40px;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
   font-family: "OpenSans", sans-serif;
   font-size: 26px;
   color: var(--primary-light);
@@ -45,4 +48,13 @@ select {
 a {
   color: var(--primary-light);
   text-decoration: none;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 40px;
+  padding-right: 40px;
 }
