@@ -20,8 +20,8 @@ const Footer = () => {
       <div>2022</div>
       <FooterRssLink href="https://rs.school/" rel="noopener noreferrer" target="_blank" />
     </AppFooter>
-  )
-}
+  );
+};
 
 const AppFooter = styled.footer`
   height: 170px;
@@ -45,7 +45,7 @@ const FooterAuthorsItem = styled.a`
   padding-left: 65px;
   background: url(${footerAuthorIco}) no-repeat;
   transition: 0.3s;
-  
+
   &:hover {
     color: var(--primary-light);
     filter: invert(19%) sepia(8%) saturate(3615%) hue-rotate(37deg) brightness(98%) contrast(86%);
@@ -63,4 +63,4 @@ const FooterRssLink = styled.a`
   }
 `;
 
-export default Footer
+export default Footer;

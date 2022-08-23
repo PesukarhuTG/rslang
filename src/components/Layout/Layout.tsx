@@ -4,9 +4,9 @@ import Footer from './Footer';
 import styled from 'styled-components';
 
 interface LayoutProps {
-  children?: React.ReactNode
-  disableHeader?: boolean
-  disableFooter?: boolean
+  children?: React.ReactNode;
+  disableHeader?: boolean;
+  disableFooter?: boolean;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children, disableHeader = false, disableFooter = false }) => {
@@ -16,8 +16,8 @@ const Layout: React.FC<LayoutProps> = ({ children, disableHeader = false, disabl
       {children}
       {!disableFooter && <Footer />}
     </Container>
-  )
-}
+  );
+};
 
 const Container = styled.div`
   max-width: 1440px;
@@ -27,4 +27,4 @@ const Container = styled.div`
   padding-right: 40px;
 `;
 
-export default Layout
+export default Layout;
