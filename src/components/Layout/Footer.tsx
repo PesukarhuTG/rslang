@@ -44,12 +44,22 @@ const FooterAuthorsItem = styled.a`
   align-items: center;
   padding-left: 65px;
   background: url(${footerAuthorIco}) no-repeat;
+  transition: 0.3s;
+  
+  &:hover {
+    color: var(--primary-light);
+    filter: invert(19%) sepia(8%) saturate(3615%) hue-rotate(37deg) brightness(98%) contrast(86%);
+  }
 `;
 
 const FooterRssLink = styled.a`
   height: 65px;
   width: 175px;
   background: url(${footerRssIco}) no-repeat;
+  transition: 0.3s;
+
+  &:hover {
+    filter: invert(19%) sepia(8%) saturate(3615%) hue-rotate(37deg) brightness(98%) contrast(86%);
 `;
 
 export default Footer

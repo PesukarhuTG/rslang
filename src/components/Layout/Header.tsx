@@ -10,10 +10,10 @@ const Header = () => {
           RSS Lang
         </HeaderLogo>
         <HeaderNav>
-          <Link to="/textbook">Учебник</Link>
-          <Link to="/sprint">Спринт</Link>
-          <Link to="/audio">Аудиовызов</Link>
-          <Link to="/statistic">Статистика</Link>
+          <HeaderNavItem to="/textbook">Учебник</HeaderNavItem>
+          <HeaderNavItem to="/sprint">Спринт</HeaderNavItem>
+          <HeaderNavItem to="/audio">Аудиовызов</HeaderNavItem>
+          <HeaderNavItem to="/statistic">Статистика</HeaderNavItem>
         </HeaderNav>
         <HeaderBtn>
           Гость
@@ -34,12 +34,26 @@ const HeaderLogo = styled(Link)`
   color: var(--primary);
   font-weight: 800;
   font-size: 54px;
+
+  &:hover {
+    color: var(--primary);
+  }
 `;
 
 const HeaderNav = styled.nav`
   display: flex;
   margin-left: auto;
   gap: 40px;
+
+  &:nth-child(1):hover {
+    color: var(--primary);
+  }
+`;
+
+const HeaderNavItem = styled(Link)`
+  &:hover {
+    color: var(--primary);
+  }
 `;
 
 const HeaderBtn = styled.button`
@@ -48,6 +62,12 @@ const HeaderBtn = styled.button`
   padding-left: 35px;
   background: url(${headerBtnIco}) var(--primary) no-repeat 20px;
   border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: var(--btn-primary-hover);
+  }
 `;
 
 export default Header;
