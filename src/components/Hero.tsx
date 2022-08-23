@@ -10,34 +10,28 @@ const InnerHero: React.FC<InnerHeroProps> = ({ image, content }) => {
   return (
     <HeroSection>
       <HeroContent>
-        <HeroText>
-          {content}
-        </HeroText>
+        <HeroText>{content}</HeroText>
         <img src={image} alt="hero-logo" />
       </HeroContent>
     </HeroSection>
-  )
-}
+  );
+};
 
 interface TitleProps {
   children: React.ReactNode;
 }
 
 const Title: React.FC<TitleProps> = ({ children }) => {
-  return (
-    <HeroTitle>{children}</HeroTitle>
-  )
-}
+  return <HeroTitle>{children}</HeroTitle>;
+};
 
 interface DescriptionProps {
   children: React.ReactNode;
 }
 
 const Description: React.FC<DescriptionProps> = ({ children }) => {
-  return (
-    <HeroDescription>{children}</HeroDescription>
-  )
-}
+  return <HeroDescription>{children}</HeroDescription>;
+};
 
 const HeroSection = styled.section`
   height: 620px;
@@ -63,7 +57,7 @@ const HeroText = styled.div`
   max-width: 850px;
   display: flex;
   flex-direction: column;
-  gap: 35px; 
+  gap: 35px;
 `;
 
 const HeroDescription = styled.p`
@@ -84,4 +78,4 @@ const Hero = InnerHero as HeroType;
 Hero.Title = Title;
 Hero.Description = Description;
 
-export default Hero
+export default Hero;
