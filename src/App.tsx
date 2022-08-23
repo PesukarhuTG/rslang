@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { MainPage, TextBookPage, SprintPage, AudioPage, StatisticPage, NotFound} from './pages';
 
-function App() {
+const App = () => {
   return (
     <Routes>
       <Route path='/' element = {<MainPage/>}/>
@@ -12,7 +12,7 @@ function App() {
       <Route path='/statistic' element = {<StatisticPage/>}/>
       <Route path='*' element = {<NotFound/>}/>
     </Routes>
-  );
+  )
 }
 
-export default App;
+export default App

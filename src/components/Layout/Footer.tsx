@@ -17,7 +17,7 @@ const Footer = () => {
           @lneer
         </FooterAuthorsItem>
       </FooterAuthors>
-      <FooterYear>2022</FooterYear>
+      <div>2022</div>
       <FooterRssLink href="https://rs.school/" rel="noopener noreferrer" target="_blank"></FooterRssLink>
     </AppFooter>
   )
@@ -44,11 +44,6 @@ const FooterAuthorsItem = styled.a`
   align-items: center;
   padding-left: 65px;
   background: url(${footerAuthorIco}) no-repeat;
-  font-family: 'Open Sans';
-`;
-
-const FooterYear = styled.div`
-  font-family: 'Open Sans';
 `;
 
 const FooterRssLink = styled.a`

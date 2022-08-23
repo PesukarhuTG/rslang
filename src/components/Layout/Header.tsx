@@ -32,7 +32,6 @@ const AppHeader = styled.header`
 
 const HeaderLogo = styled(Link)`
   color: var(--primary);
-  font-family: 'Open Sans';
   font-weight: 800;
   font-size: 54px;
 `;
@@ -41,8 +40,6 @@ const HeaderNav = styled.nav`
   display: flex;
   margin-left: auto;
   gap: 40px;
-  font-family: 'Open Sans';
-  font-size: 26px;
 `;
 
 const HeaderBtn = styled.button`
@@ -51,8 +48,6 @@ const HeaderBtn = styled.button`
   padding-left: 35px;
   background: url(${headerBtnIco}) var(--primary) no-repeat 20px;
   border-radius: 10px;
-  font-family: 'Open Sans';
-  font-size: 26px;
 `;
 
 export default Header;
