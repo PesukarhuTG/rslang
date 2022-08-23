@@ -1,19 +1,19 @@
 @font-face {
   font-family: "OpenSans-Regular";
-  src: url("../../assets/fonts/OpenSans-Regular.ttf") format("truetype");
+  src: url("../assets/fonts/OpenSans-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "OpenSans-Bold";
-  src: url("../../assets/fonts/OpenSans-Bold.ttf") format("truetype");
+  src: url("../assets/fonts/OpenSans-Bold.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "OpenSans-BoldItalic";
-  src: url("../../assets/fonts/OpenSans-BoldItalic.ttf") format("truetype");
+  src: url("../assets/fonts/OpenSans-BoldItalic.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "OpenSans-Italic";
-  src: url("../../assets/fonts/OpenSans-Italic.ttf") format("truetype");
+  src: url("../assets/fonts/OpenSans-Italic.ttf") format("truetype");
 }
