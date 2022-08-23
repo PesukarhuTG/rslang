@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import headerBtnIco from '../../assets/svg/header-btn-ico.svg'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -10,15 +10,28 @@ const Header = () => {
           RSS Lang
         </HeaderLogo>
         <HeaderNav>
-          <HeaderNavItem to="/textbook">Учебник</HeaderNavItem>
-          <HeaderNavItem to="/sprint">Спринт</HeaderNavItem>
-          <HeaderNavItem to="/audio">Аудиовызов</HeaderNavItem>
-          <HeaderNavItem to="/statistic">Статистика</HeaderNavItem>
+          <HeaderNavItem to="/textbook" label='Учебник' />
+          <HeaderNavItem to="/sprint" label='Спринт' />
+          <HeaderNavItem to="/audio" label='Аудиовызов' />
+          <HeaderNavItem to="/statistic" label='Статистика' />
         </HeaderNav>
         <HeaderBtn>
           Гость
         </HeaderBtn>
       </AppHeader>
+  )
+}
+
+interface HeaderNavItemProps {
+  to: string;
+  label: string;
+}
+
+const HeaderNavItem: React.FC<HeaderNavItemProps> = ({ to, label }) => {
+  const { pathname } = useLocation();
+  
+  return (
+    <HeaderLink to={to} $active={to === pathname}>{label}</HeaderLink>
   )
 }
 
@@ -50,7 +63,11 @@ const HeaderNav = styled.nav`
   }
 `;
 
-const HeaderNavItem = styled(Link)`
+const HeaderLink = styled(Link)<{
+  $active: boolean;
+}>`
+  color: ${({ $active }) => $active ? 'var(--primary)' : 'var(--primary-light)'} !important;
+
   &:hover {
     color: var(--primary);
   }

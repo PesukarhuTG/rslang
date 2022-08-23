@@ -18,7 +18,7 @@ const Footer = () => {
         </FooterAuthorsItem>
       </FooterAuthors>
       <div>2022</div>
-      <FooterRssLink href="https://rs.school/" rel="noopener noreferrer" target="_blank"></FooterRssLink>
+      <FooterRssLink href="https://rs.school/" rel="noopener noreferrer" target="_blank" />
     </AppFooter>
   )
 }
@@ -60,6 +60,7 @@ const FooterRssLink = styled.a`
 
   &:hover {
     filter: invert(19%) sepia(8%) saturate(3615%) hue-rotate(37deg) brightness(98%) contrast(86%);
+  }
 `;
 
 export default Footer
