@@ -1,27 +1,27 @@
 :root {
-  --main-background: #141F23;
-  --card-background: #0D171B;
-  --game-background: #0D171B;
-  --primary: #94D53D;
+  --main-background: #141f23;
+  --card-background: #0d171b;
+  --game-background: #0d171b;
+  --primary: #94d53d;
   --primary-light: #fff;
   --primary-dark: #000;
 
-  --language-level-1: #94D53D;
-  --language-level-2: #D3F300;
-  --language-level-3: #2BF8AE;
-  --language-level-4: #394AF5;
-  --language-level-5: #3FCBFF;
-  --language-level-6: #B039F5;
-  --language-level-7: #F53E94;
+  --language-level-1: #94d53d;
+  --language-level-2: #d3f300;
+  --language-level-3: #2bf8ae;
+  --language-level-4: #394af5;
+  --language-level-5: #3fcbff;
+  --language-level-6: #b039f5;
+  --language-level-7: #f53e94;
 
-  --btn-primary: #94D53D;
-  --btn-dark: #141F23;
-  --btn-primary-hover: #6CA322;
-  --btn-wrong-hover: #C21E6B;
+  --btn-primary: #94d53d;
+  --btn-dark: #141f23;
+  --btn-primary-hover: #6ca322;
+  --btn-wrong-hover: #c21e6b;
 
-  --answer-right: #94D53D;
-  --answer-wrong: #F53E94;
+  --answer-right: #94d53d;
+  --answer-wrong: #f53e94;
 
-  --icon-learned: #94D53D;
-  --icon-difficult: #F53E94;
+  --icon-learned: #94d53d;
+  --icon-difficult: #f53e94;
 }
