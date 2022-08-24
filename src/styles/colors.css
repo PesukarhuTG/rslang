@@ -14,13 +14,14 @@
   --language-level-6: #b039f5;
   --language-level-7: #f53e94;
 
+  --btn-font-hover: #efefef;
   --btn-primary: #94d53d;
-  --btn-dark: #141f23;
   --btn-primary-hover: #6ca322;
-  --btn-wrong-hover: #c21e6b;
-
-  --answer-right: #94d53d;
+  --btn-dark: #141f23;
+  --btn-dark-hover: #0d171b;
   --answer-wrong: #f53e94;
+  --btn-wrong-hover: #c21e6b;
+  --answer-right: #94d53d;
 
   --icon-learned: #94d53d;
   --icon-difficult: #f53e94;
