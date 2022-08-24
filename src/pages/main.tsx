@@ -1,10 +1,23 @@
 import React from 'react';
-import { Layout } from '../components';
+import { Layout, Hero, Advantages } from '../components';
+import mainImg from '../assets/svg/hero-main-logo.svg';
 
 const MainPage = () => {
   return (
     <div className="App">
-      <Layout></Layout>
+      <Layout>
+        <Hero
+          image={mainImg}
+          content={
+            <>
+              <Hero.Title>
+                <strong>Бесплатное</strong> обучение английскому языку
+              </Hero.Title>
+            </>
+          }
+        />
+        <Advantages />
+      </Layout>
     </div>
   );
 };

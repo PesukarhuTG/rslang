@@ -43,7 +43,7 @@ const AppHeader = styled.header`
 
 const HeaderLogo = styled(Link)`
   color: var(--primary);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 54px;
 
   &:hover {
