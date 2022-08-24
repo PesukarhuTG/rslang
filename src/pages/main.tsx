@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Hero } from '../components';
+import { Layout, Hero, Advantages } from '../components';
 import mainImg from '../assets/svg/hero-main-logo.svg';
 
 const MainPage = () => {
@@ -16,6 +16,7 @@ const MainPage = () => {
             </>
           }
         />
+        <Advantages />
       </Layout>
     </div>
   );
