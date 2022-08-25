@@ -19,39 +19,22 @@ interface ICard {
   textExampleTranslate: string;
 }
 
-const card: ICard = {
-  id: '5e9f5ee35eb9e72bc21af733',
-  group: 1,
-  page: 2,
-  word: 'weapon',
-  image: 'files/03_0660.jpg',
-  audio: 'files/03_0660.mp3',
-  audioMeaning: 'files/03_0660_meaning.mp3',
-  audioExample: 'files/03_0660_example.mp3',
-  textMeaning: 'A <i>weapon</i> is an object used to hurt people.',
-  textExample: 'Swords have been used as <b>weapons</b> for thousands of years.',
-  transcription: '[wépən]',
-  textExampleTranslate: 'Мечи использовались в качестве оружия на протяжении тысячелетий',
-  textMeaningTranslate: 'Оружие - это объект, используемый для причинения вреда людям',
-  wordTranslate: 'оружие',
-};
-
-const FlashCard = () => {
+const FlashCard: React.FC<ICard> = ({ word, transcription, wordTranslate, textMeaning, textMeaningTranslate }) => {
   return (
     <Card>
       <CardImage src="https://millionstatusov.ru/pic/statpic/all8/5e04c21a52a39.jpg" alt="картинка" />
       <CardBody>
         <WordDeclaration>
           <WordTranscription>
-            {card.word} {card.transcription}
+            {word} {transcription}
           </WordTranscription>
           <SoundIco></SoundIco>
         </WordDeclaration>
-        <WordTranslate>{card.wordTranslate}</WordTranslate>
+        <WordTranslate>{wordTranslate}</WordTranslate>
       </CardBody>
       <CardMeaning>
-        <p>{card.textMeaning}</p>
-        <p>{card.textMeaningTranslate}</p>
+        <p>{textMeaning}</p>
+        <p>{textMeaningTranslate}</p>
       </CardMeaning>
     </Card>
   );
