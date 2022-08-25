@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import soundico from '../assets/svg/sound-icon.svg';
+import { DBLink } from '../types/DataBaseLink';
 
 interface ICard {
   id: string;
@@ -19,25 +20,48 @@ interface ICard {
   textExampleTranslate: string;
 }
 
-const FlashCard: React.FC<ICard> = ({ word, transcription, wordTranslate, textMeaning, textMeaningTranslate }) => {
+interface WordsProps {
+  word: ICard;
+}
+
+const FlashCard: React.FC<WordsProps> = ({ word }) => {
+  const [play, setPlay] = useState(true);
+  const playAudio = () => {
+    setPlay(!play);
+    const audio = new Audio(`${DBLink + word.audio}`);
+    const audioMeaning = new Audio(`${DBLink + word.audioMeaning}`);
+    const audioExample = new Audio(`${DBLink + word.audioExample}`);
+    audio.play();
+    audio.addEventListener('ended', () => audioMeaning.play());
+    audioMeaning.addEventListener('ended', () => audioExample.play());
+    audioExample.addEventListener('ended', () => setPlay(play));
+  };
   return (
     <Card>
-      <CardImage src="https://millionstatusov.ru/pic/statpic/all8/5e04c21a52a39.jpg" alt="картинка" />
+      <CardImage src={`${DBLink + word.image}`} alt={word.word} />
       <CardBody>
         <WordDeclaration>
           <WordTranscription>
-            {word} {transcription}
+            {word.word} {word.transcription}
           </WordTranscription>
-          <SoundIco></SoundIco>
+          <SoundIco onClick={play ? playAudio : () => {}}></SoundIco>
         </WordDeclaration>
-        <WordTranslate>{wordTranslate}</WordTranslate>
+        <WordTranslate children={word.wordTranslate} />
       </CardBody>
       <CardMeaning>
-        <p>{textMeaning}</p>
-        <p>{textMeaningTranslate}</p>
+        <p children={word.textMeaning} />
+        <p>{word.textMeaningTranslate}</p>
       </CardMeaning>
     </Card>
   );
+};
+
+interface WordMeaningProps {
+  word: string;
+  meaning: string;
+}
+const WordMeaning: React.FC<WordMeaningProps> = ({ word, meaning }) => {
+  return <div></div>;
 };
 
 const Card = styled.div`
@@ -81,6 +105,10 @@ const SoundIco = styled.div`
   background: url(${soundico}) no-repeat;
   width: 40px;
   height: 40px;
+  &:hover {
+    cursor: pointer;
+    scale: 0.95;
+  }
 `;
 
 const WordTranslate = styled.div`
