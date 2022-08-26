@@ -39,7 +39,7 @@ const exampleCard = {
   wordTranslate: 'оружие',
 };
 
-const TextBookPage = () => {
+const TextbookPage = () => {
   return (
     <Layout>
       <p>Учебник</p>
@@ -48,4 +48,4 @@ const TextBookPage = () => {
   );
 };
 
-export default TextBookPage;
+export default TextbookPage;
