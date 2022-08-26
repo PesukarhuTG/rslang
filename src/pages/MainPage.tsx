@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Hero, Advantages, Select, Button } from '../components';
+import { Layout, Hero, Advantages, Select, Button, Title, Subtitle } from '../components';
 import mainImg from '../assets/svg/hero-main-logo.svg';
 import styled from 'styled-components';
 
@@ -25,8 +25,10 @@ const MainPage = () => {
           </>
         }
       />
+      <Title content="Наши преимущества" />
       <Advantages />
-      <h2>Выберите уровень</h2>
+
+      <Subtitle content="Выберите уровень" />
       <ChooseLevelWrapper>
         <Select options={options} onChange={value => console.log(value)} />
         <GameButtons>

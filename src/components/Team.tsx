@@ -7,7 +7,6 @@ import authorImage3 from '../assets/svg/team-author-3.png';
 const Team = () => {
   return (
     <TeamSection>
-      <TeamTitle>О команде</TeamTitle>
       <TeamContent>
         <TeamItemImage>
           <img src={authorImage1} alt="author" />
@@ -53,13 +52,6 @@ const Team = () => {
 const TeamSection = styled.section`
   padding-top: 60px;
   padding-bottom: 100px;
-`;
-
-const TeamTitle = styled.h3`
-  margin-bottom: 60px;
-  color: var(--primary-light);
-  font-size: 54px;
-  font-weight: 700;
 `;
 
 const TeamContent = styled.div`
