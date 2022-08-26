@@ -21,9 +21,8 @@ const Button: React.FC<ButtonProps> = ({ label, disabled = false, type = 'primar
 const StyledButton = styled.button<{
   $type: ButtonType;
 }>`
-  width: 320px;
-  height: 120px;
-  margin: 0 10px;
+  padding: 0 40px;
+  height: 60px;
   font-size: 30px;
   font-weight: 700;
   border: none;
