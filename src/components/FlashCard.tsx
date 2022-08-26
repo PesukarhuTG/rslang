@@ -52,6 +52,7 @@ const FlashCard: React.FC<WordsProps> = ({ word }) => {
         <p children={word.textMeaning} />
         <p>{word.textMeaningTranslate}</p>
       </CardMeaning>
+      <WordMeaning word={word.word} meaning={word.textMeaning} />
     </Card>
   );
 };
@@ -61,7 +62,11 @@ interface WordMeaningProps {
   meaning: string;
 }
 const WordMeaning: React.FC<WordMeaningProps> = ({ word, meaning }) => {
-  return <div></div>;
+  const meaningArr: string[] = meaning.split(' ');
+  const tagfinder = meaningArr.map(elem =>
+    elem.includes(`>${word}<`) ? React.createElement('i', { children: elem }) : elem
+  );
+  return <>{tagfinder.join(' ')}</>;
 };
 
 const Card = styled.div`
