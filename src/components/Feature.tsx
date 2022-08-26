@@ -4,7 +4,6 @@ import styled from 'styled-components';
 const Feature = () => {
   return (
     <FeatureSection>
-      <FeatureTitle>Возможности приложения</FeatureTitle>
       <FeatureContent>
         <FeatureItem
           title="Учебник"
@@ -44,13 +43,6 @@ const FeatureItem: React.FC<FeatureItemProps> = ({ title, descr }) => {
 const FeatureSection = styled.section`
   padding-top: 75px;
   padding-bottom: 120px;
-`;
-
-const FeatureTitle = styled.h3`
-  margin-bottom: 50px;
-  color: var(--primary-light);
-  font-size: 54px;
-  font-weight: 700;
 `;
 
 const FeatureContent = styled.div`
