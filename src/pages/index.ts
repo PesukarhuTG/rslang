@@ -1,6 +1,6 @@
-export { default as AudioPage } from './Audio';
-export { default as MainPage } from './Main';
-export { default as NotFound } from './NotFound';
-export { default as SprintPage } from './Sprint';
-export { default as StatisticPage } from './Statistic';
-export { default as TextBookPage } from './Textbook';
+export { default as AudioPage } from './AudioPage';
+export { default as MainPage } from './MainPage';
+export { default as NotFound } from './NotFoundPage';
+export { default as SprintPage } from './SprintPage';
+export { default as StatisticPage } from './StatisticPage';
+export { default as TextbookPage } from './TextbookPage';

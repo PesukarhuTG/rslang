@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout/Layout';
 
-const TextBookPage = () => {
+const TextbookPage = () => {
   return (
     <Layout>
       <p>Учебник</p>
@@ -9,4 +9,4 @@ const TextBookPage = () => {
   );
 };
 
-export default TextBookPage;
+export default TextbookPage;
