@@ -2,14 +2,21 @@ import React from 'react';
 import { Pagination as AntdPagination } from 'antd';
 import styled from 'styled-components';
 
-const Pagination = () => {
+interface PaginationProps {
+  page?: number;
+  total?: number;
+  onChange?: (page: number) => void;
+}
+
+const Pagination: React.FC<PaginationProps> = ({ page = 1, onChange = () => {}, total = 1 }) => {
   return (
     <StyledPagination
+      current={page}
       size="small"
       defaultCurrent={1}
-      total={600}
-      pageSize={20}
-      onChange={page => console.log(page)}
+      total={total}
+      pageSize={1}
+      onChange={onChange}
       showSizeChanger={false}
     />
   );
@@ -19,8 +26,10 @@ const StyledPagination = styled(AntdPagination)`
   font-size: 36px;
 
   .ant-pagination-item-link {
-    font-size: 36px;
+    font-size: 30px;
     color: var(--primary);
+
+    transform: translateY(-4px);
 
     &:hover {
       color: var(--btn-primary-hover);
@@ -60,19 +69,19 @@ const StyledPagination = styled(AntdPagination)`
 
   .ant-pagination-item-container {
     & .ant-pagination-item-ellipsis {
-      top: 12px;
-      letter-spacing: 1px;
+      top: 7px;
+      letter-spacing: 5px;
       text-indent: 0;
-      font-size: 30px;
+      font-size: 20px;
       color: var(--primary-light);
     }
 
     & .ant-pagination-item-link-icon {
       position: absolute;
       color: var(--primary);
-      font-size: 20px;
-      top: 2px;
-      left: 7px;
+      font-size: 30px;
+      top: -8px;
+      left: 2px;
     }
   }
 `;

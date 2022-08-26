@@ -76,6 +76,7 @@ const HeaderBtn = styled.button`
   height: 60px;
   padding-left: 35px;
   background: url(${headerBtnIco}) var(--primary) no-repeat 20px;
+  border: none;
   border-radius: 10px;
   cursor: pointer;
   transition: 0.3s;
