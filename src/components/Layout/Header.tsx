@@ -7,13 +7,15 @@ const Header = () => {
   return (
     <AppHeader>
       <HeaderLogo to="/">RSS Lang</HeaderLogo>
-      <HeaderNav>
-        <HeaderNavItem to="/textbook" label="Учебник" />
-        <HeaderNavItem to="/sprint" label="Спринт" />
-        <HeaderNavItem to="/audio" label="Аудиовызов" />
-        <HeaderNavItem to="/statistic" label="Статистика" />
-      </HeaderNav>
-      <HeaderBtn>Гость</HeaderBtn>
+      <Container>
+        <HeaderNav>
+          <HeaderNavItem to="/textbook" label="Учебник" />
+          <HeaderNavItem to="/sprint" label="Спринт" />
+          <HeaderNavItem to="/audio" label="Аудиовызов" />
+          <HeaderNavItem to="/statistic" label="Статистика" />
+        </HeaderNav>
+        <HeaderBtn>Гость</HeaderBtn>
+      </Container>
     </AppHeader>
   );
 };
@@ -34,11 +36,16 @@ const HeaderNavItem: React.FC<HeaderNavItemProps> = ({ to, label }) => {
 };
 
 const AppHeader = styled.header`
-  height: 170px;
+  min-height: 170px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  gap: 40px;
+
+  @media (max-width: 1200px) {
+    padding: 20px 0;
+    flex-direction: column;
+    gap: 20px;
+  }
 `;
 
 const HeaderLogo = styled(Link)`
@@ -51,9 +58,16 @@ const HeaderLogo = styled(Link)`
   }
 `;
 
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const HeaderNav = styled.nav`
   display: flex;
   margin-left: auto;
+  margin-right: 40px;
   gap: 40px;
 
   &:nth-child(1):hover {
@@ -72,11 +86,12 @@ const HeaderLink = styled(Link)<{
 `;
 
 const HeaderBtn = styled.button`
-  width: 150px;
   height: 60px;
-  padding-left: 35px;
+  padding-left: 70px;
+  padding-right: 30px;
   background: url(${headerBtnIco}) var(--primary) no-repeat 20px;
   border-radius: 10px;
+  border: 0;
   cursor: pointer;
   transition: 0.3s;
 

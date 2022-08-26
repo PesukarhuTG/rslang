@@ -34,7 +34,7 @@ const Description: React.FC<DescriptionProps> = ({ children }) => {
 };
 
 const HeroSection = styled.section`
-  height: 620px;
+  min-height: 620px;
   display: flex;
   align-items: center;
 `;
@@ -45,12 +45,24 @@ const HeroContent = styled.div`
   padding-left: 40px;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 1100px) {
+    flex-direction: column-reverse;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    padding-left: 0;
+  }
 `;
 
 const HeroTitle = styled.h2`
   margin: 0;
   font-size: 60px;
   color: var(--primary);
+
+  @media (max-width: 1100px) {
+    text-align: center;
+  }
 `;
 
 const HeroText = styled.div`

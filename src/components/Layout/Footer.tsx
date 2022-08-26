@@ -24,10 +24,16 @@ const Footer = () => {
 };
 
 const AppFooter = styled.footer`
-  height: 170px;
+  min-height: 170px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 1200px) {
+    flex-direction: column;
+    gap: 50px;
+    padding: 20px 0;
+  }
 `;
 
 const FooterAuthors = styled.div`
@@ -53,6 +59,7 @@ const FooterAuthorsItem = styled.a`
 `;
 
 const FooterRssLink = styled.a`
+  display: block;
   height: 65px;
   width: 175px;
   background: url(${footerRssIco}) no-repeat;
@@ -60,6 +67,10 @@ const FooterRssLink = styled.a`
 
   &:hover {
     filter: invert(19%) sepia(8%) saturate(3615%) hue-rotate(37deg) brightness(98%) contrast(86%);
+  }
+
+  @media (max-width: 1200px) {
+    order: -1;
   }
 `;
 
