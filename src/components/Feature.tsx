@@ -4,24 +4,22 @@ import styled from 'styled-components';
 const Feature = () => {
   return (
     <FeatureSection>
-      <FeatureContent>
-        <FeatureItem
-          title="Учебник"
-          descr="Более 3600 слов для изучения, разбитых по уровням сложности для разных типов подготовки"
-        />
-        <FeatureItem
-          title="Мини-игры"
-          descr="Вам доступно две мини-игры, которые позволят сделать изучение языка увлекательным процессом!"
-        />
-        <FeatureItem
-          title="Сложные слова"
-          descr="После регистрации вам будет доступен персональный словарь для тренировки наиболее важных слов"
-        />
-        <FeatureItem
-          title="Статистика"
-          descr="Возможность отслеживать свой прогресс в реальном времени, вдохновляться этим и гордится!"
-        />
-      </FeatureContent>
+      <FeatureItem
+        title="Учебник"
+        descr="Более 3600 слов для изучения, разбитых по уровням сложности для разных типов подготовки"
+      />
+      <FeatureItem
+        title="Мини-игры"
+        descr="Вам доступно две мини-игры, которые позволят сделать изучение языка увлекательным процессом!"
+      />
+      <FeatureItem
+        title="Сложные слова"
+        descr="После регистрации вам будет доступен персональный словарь для тренировки наиболее важных слов"
+      />
+      <FeatureItem
+        title="Статистика"
+        descr="Возможность отслеживать свой прогресс в реальном времени, вдохновляться этим и гордится!"
+      />
     </FeatureSection>
   );
 };
@@ -40,19 +38,24 @@ const FeatureItem: React.FC<FeatureItemProps> = ({ title, descr }) => {
   );
 };
 
-const FeatureSection = styled.section`
-  padding-top: 75px;
-  padding-bottom: 120px;
-`;
-
-const FeatureContent = styled.div`
-  display: flex;
+const FeatureSection = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+
+  @media (max-width: 1480px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 760px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const FeatureCard = styled.div`
-  padding: 15px 15px 40px;
-  min-width: 325px;
+  padding: 20px 15px;
+  min-width: 326px;
   border-radius: 10px;
   background-color: var(--card-background);
 `;
@@ -65,7 +68,10 @@ const FeatureItemTitle = styled.h4`
 `;
 
 const FeatureItemDescr = styled.p`
-  margin: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 24px;
+  line-height: 1.7;
 `;
 
 export default Feature;
