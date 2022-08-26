@@ -40,12 +40,12 @@ const MainPage = () => {
 
 const ChooseLevelWrapper = styled.div`
   display: grid;
-  grid-template-columns: 530px 1fr;
+  grid-template-columns: 385px 1fr;
 `;
 
 const GameButtons = styled.div`
   display: flex;
-  gap: 20px;
+  gap: 40px;
   margin-left: auto;
 `;
 

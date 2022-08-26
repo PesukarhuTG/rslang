@@ -32,6 +32,7 @@ const Select: React.FC<SelectProps> = ({ options, onChange = () => {}, disabled 
 
 const StyledSelect = styled(AntdSelect)`
   height: 60px;
+  border: 1px solid 'var(--primary-dark)' !important;
 
   & * {
     color: var(--primary-light);
@@ -42,6 +43,7 @@ const StyledSelect = styled(AntdSelect)`
     height: 60px !important;
     background-color: var(--primary-dark);
     border-radius: 10px;
+    border: 1px solid var(--primary) !important;
     font-size: 20px;
 
     .ant-select-selection-search-input {
