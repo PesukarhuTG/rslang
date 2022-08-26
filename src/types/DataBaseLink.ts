@@ -1,1 +1,1 @@
-export const DBLink = 'https://react-learnwords-example.herokuapp.com/'
+export const DBLink = 'https://react-learnwords-example.herokuapp.com/';
