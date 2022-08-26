@@ -1,28 +1,16 @@
 import React, { useState } from 'react';
+import parse from 'html-react-parser';
 import styled from 'styled-components';
 import soundico from '../assets/svg/sound-icon.svg';
 import MemoryCard from '../types/Card';
 import { DBLink } from '../types/DataBaseLink';
-
-interface WordExamplesProps {
-  text: string;
-  textTranslate: string;
-}
-const WordExamples: React.FC<WordExamplesProps> = ({ text, textTranslate }) => {
-  return (
-    <WordMeaning>
-      <p dangerouslySetInnerHTML={{ __html: `${text}` }}></p>
-      <p>{textTranslate}</p>
-    </WordMeaning>
-  );
-};
 
 interface WordsProps {
   word: MemoryCard;
 }
 
 const FlashCard: React.FC<WordsProps> = ({ word }) => {
-  const [play, setPlay] = useState(true);
+  const [play, setPlay] = useState<boolean>(true);
   const playAudio = () => {
     setPlay(!play);
     const audio = new Audio(`${DBLink + word.audio}`);
@@ -34,24 +22,35 @@ const FlashCard: React.FC<WordsProps> = ({ word }) => {
     audioExample.addEventListener('ended', () => setPlay(play));
   };
   return (
-    <Card>
+    <CardBody>
       <CardImage src={`${DBLink + word.image}`} alt={word.word} />
       <WordDeclaration>
         <Word>
-          <WordTranscription>
-            {word.word} {word.transcription}
-          </WordTranscription>
+          <WordTranscription children={[`${word.word}`, ` ${word.transcription}`]} />
           <WordAudio onClick={play ? playAudio : () => {}}></WordAudio>
         </Word>
         <WordTranslation children={word.wordTranslate} />
       </WordDeclaration>
       <WordExamples text={word.textMeaning} textTranslate={word.textMeaningTranslate} />
       <WordExamples text={word.textExample} textTranslate={word.textExampleTranslate} />
-    </Card>
+    </CardBody>
   );
 };
 
-const Card = styled.div`
+interface WordExamplesProps {
+  text: string;
+  textTranslate: string;
+}
+const WordExamples: React.FC<WordExamplesProps> = ({ text, textTranslate }) => {
+  return (
+    <WordMeaning>
+      <p>{parse(text)}</p>
+      <p>{textTranslate}</p>
+    </WordMeaning>
+  );
+};
+
+const CardBody = styled.div`
   margin: 0 auto;
   min-width: 440px;
   min-height: 890px;
