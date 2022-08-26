@@ -7,8 +7,7 @@ import authorImage3 from '../assets/svg/team-author-3.png';
 const Team = () => {
   return (
     <TeamSection>
-      <TeamTitle>О команде</TeamTitle>
-      <TeamContent>
+      <TeamItem>
         <TeamItemImage>
           <img src={authorImage1} alt="author" />
         </TeamItemImage>
@@ -21,6 +20,9 @@ const Team = () => {
             <li>учебник и словарь</li>
           </TeamItemDescription>
         </div>
+      </TeamItem>
+
+      <TeamItem>
         <TeamItemImage>
           <img src={authorImage2} alt="author" />
         </TeamItemImage>
@@ -33,6 +35,9 @@ const Team = () => {
             <li>учебник и словарь</li>
           </TeamItemDescription>
         </div>
+      </TeamItem>
+
+      <TeamItem>
         <TeamItemImage>
           <img src={authorImage3} alt="author" />
         </TeamItemImage>
@@ -45,40 +50,64 @@ const Team = () => {
             <li>учебник и словарь</li>
           </TeamItemDescription>
         </div>
-      </TeamContent>
+      </TeamItem>
     </TeamSection>
   );
 };
 
-const TeamSection = styled.section`
-  padding-top: 60px;
-  padding-bottom: 100px;
-`;
-
-const TeamTitle = styled.h3`
-  margin-bottom: 60px;
-  color: var(--primary-light);
-  font-size: 54px;
-  font-weight: 700;
-`;
-
-const TeamContent = styled.div`
+const TeamSection = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-auto-flow: column;
   gap: 20px;
+  margin-bottom: 80px;
+
+  @media (max-width: 1400px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const TeamItem = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 1400px) {
+    margin-bottom: 50px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  @media (max-width: 930px) {
+    flex-direction: column;
+  }
 `;
 
 const TeamItemImage = styled.div`
   justify-self: center;
+
+  @media (max-width: 1400px) {
+    margin-right: 80px;
+  }
+
+  @media (max-width: 930px) {
+    margin-right: 0;
+  }
 `;
 
 const TeamItemTitle = styled.h4`
+  margin-top: 30px;
   margin-bottom: 20px;
   color: var(--primary);
   font-size: 36px;
   font-weight: 700;
+
+  @media (max-width: 1400px) {
+    margin-top: 0;
+  }
+
+  @media (max-width: 930px) {
+    margin-top: 30px;
+  }
 `;
 
 const TeamItemSubtitle = styled.p`

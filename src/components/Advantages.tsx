@@ -7,57 +7,42 @@ import progressSvg from '../assets/svg/adv-progress.svg';
 
 const Advantages = () => {
   return (
-    <Wrapper>
-      <Title>Наши преимущества</Title>
-      <AdvantagesSection>
-        <AdvItem>
-          <AdvSvg style={{ background: `url(${freeSvg}) no-repeat` }} />
-          <AdvDescription>
-            Можно заниматься абсолютно <strong>бесплатно!</strong>
-          </AdvDescription>
-        </AdvItem>
-        <AdvItem>
-          <AdvSvg style={{ background: `url(${dictionarySvg}) no-repeat` }} />
-          <AdvDescription>
-            Активное расширение <strong>словарного запаса</strong>
-          </AdvDescription>
-        </AdvItem>
-        <AdvItem>
-          <AdvSvg style={{ background: `url(${gameSvg}) no-repeat` }} />
-          <AdvDescription>
-            Увлекательная <strong>игровая форма обучения</strong>
-          </AdvDescription>
-        </AdvItem>
-        <AdvItem>
-          <AdvSvg style={{ background: `url(${progressSvg}) no-repeat` }} />
-          <AdvDescription>
-            Динамика <strong>своего прогресса</strong>
-          </AdvDescription>
-        </AdvItem>
-      </AdvantagesSection>
-    </Wrapper>
+    <AdvantagesSection>
+      <AdvItem>
+        <AdvSvg style={{ background: `url(${freeSvg}) no-repeat` }} />
+        <AdvDescription>
+          Можно заниматься абсолютно <strong>бесплатно!</strong>
+        </AdvDescription>
+      </AdvItem>
+      <AdvItem>
+        <AdvSvg style={{ background: `url(${dictionarySvg}) no-repeat` }} />
+        <AdvDescription>
+          Активное расширение <strong>словарного запаса</strong>
+        </AdvDescription>
+      </AdvItem>
+      <AdvItem>
+        <AdvSvg style={{ background: `url(${gameSvg}) no-repeat` }} />
+        <AdvDescription>
+          Увлекательная <strong>игровая форма обучения</strong>
+        </AdvDescription>
+      </AdvItem>
+      <AdvItem>
+        <AdvSvg style={{ background: `url(${progressSvg}) no-repeat` }} />
+        <AdvDescription>
+          Динамика <strong>своего прогресса</strong>
+        </AdvDescription>
+      </AdvItem>
+    </AdvantagesSection>
   );
 };
 
-const Title = styled.h3`
-  margin-top: 100px;
-  font-size: 54px;
-  font-weight: 700;
-`;
-
-const Wrapper = styled.div`
-  width: 100%;
-`;
-
 const AdvantagesSection = styled.div`
   width: 100%;
-  margin-top: 70px;
-  margin-bottom: 100px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 
-  @media (max-width: 1420px) {
+  @media (max-width: 1480px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -82,6 +67,10 @@ const AdvSvg = styled.div`
 const AdvDescription = styled.p`
   margin-top: 40px;
   text-align: center;
+
+  @media (max-width: 1480px) {
+    max-width: 350px;
+  }
 `;
 
 export default Advantages;
