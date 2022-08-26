@@ -90,6 +90,7 @@ const HeaderBtn = styled.button`
   padding-left: 70px;
   padding-right: 30px;
   background: url(${headerBtnIco}) var(--primary) no-repeat 20px;
+  border: none;
   border-radius: 10px;
   border: 0;
   cursor: pointer;
