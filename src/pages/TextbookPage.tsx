@@ -51,7 +51,7 @@ const TextbookPage = () => {
 };
 const GridWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-auto-flow: row;
   grid-template-areas:
     'sel btn'
     'pag pag';

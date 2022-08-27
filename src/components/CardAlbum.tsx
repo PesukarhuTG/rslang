@@ -28,7 +28,8 @@ const Album = styled.div`
   margin: 0 auto;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+  justify-content: space-between;
   gap: 20px;
 `;
 export default CardAlbum;
