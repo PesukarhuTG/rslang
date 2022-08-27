@@ -10,24 +10,25 @@ interface CardAlbumProps {
 }
 
 const CardAlbum: React.FC<CardAlbumProps> = ({ group = '1', aPage = '1' }) => {
-  const [albumPage, setAlbumPage] = useState([]);
+  const [albumPage, setAlbumPage] = useState<MemoryCard[]>([]);
   useEffect(() => {
-    getData('words', [setAlbumPage], { group: `${group}`, page: `${aPage}` });
+    getData('words', [cards => setAlbumPage(cards as MemoryCard[])], { group: `${group}`, page: `${aPage}` });
   }, [group, aPage]);
 
   return (
     <Album>
-      {(albumPage as MemoryCard[]).map(word => (
+      {albumPage.map(word => (
         <FlashCard word={word} key={word.id} />
       ))}
     </Album>
   );
 };
+
 const Album = styled.div`
   margin: 0 auto;
-  width: 90%;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 20px;
 `;
 export default CardAlbum;

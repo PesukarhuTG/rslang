@@ -1,6 +1,7 @@
 import CreateUrl from "./createUrl";
-import { Options, GetHandler } from "../types/DataBaseTypes"
+import { Options } from "./createUrl"
 
+type GetHandler = [(data?: unknown) => void, (<U>(data?: U) => void)?]
 
 const getData = async (endpoint: string, handlers: GetHandler, options?: Options) => {
 	const [callback, errorHandler = () => { console.log('ups') }] = handlers;

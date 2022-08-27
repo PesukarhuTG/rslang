@@ -1,5 +1,8 @@
-import { DBLink, Options } from "../types/DataBaseTypes"
+import { DBLink } from "../types/DataBaseTypes"
 
+export type Options = {
+	[key: string]: string
+}
 
 const CreateUrl = (endpoint: string, options?: Options): string => {
 	let querryUrl: string = '';
