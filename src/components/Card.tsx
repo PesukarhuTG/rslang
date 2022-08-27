@@ -13,9 +13,9 @@ const FlashCard: React.FC<WordsProps> = ({ word }) => {
   const [play, setPlay] = useState<boolean>(true);
   const playAudio = () => {
     setPlay(!play);
-    const audio = new Audio(`${DBLink + word.audio}`);
-    const audioMeaning = new Audio(`${DBLink + word.audioMeaning}`);
-    const audioExample = new Audio(`${DBLink + word.audioExample}`);
+    const audio = new Audio(`${DBLink}${word.audio}`);
+    const audioMeaning = new Audio(`${DBLink}${word.audioMeaning}`);
+    const audioExample = new Audio(`${DBLink}${word.audioExample}`);
     audio.play();
     audio.addEventListener('ended', () => audioMeaning.play());
     audioMeaning.addEventListener('ended', () => audioExample.play());
@@ -23,10 +23,12 @@ const FlashCard: React.FC<WordsProps> = ({ word }) => {
   };
   return (
     <CardBody>
-      <CardImage src={`${DBLink + word.image}`} alt={word.word} />
+      <CardImage src={`${DBLink}${word.image}`} alt={word.word} />
       <WordDeclaration>
         <Word>
-          <WordTranscription children={[`${word.word}`, ` ${word.transcription}`]} />
+          <WordTranscription>
+            {word.word} {word.transcription}
+          </WordTranscription>
           <WordAudio onClick={play ? playAudio : () => {}}></WordAudio>
         </Word>
         <WordTranslation children={word.wordTranslate} />
