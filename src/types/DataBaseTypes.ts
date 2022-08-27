@@ -6,4 +6,4 @@ export type Options = {
 
 export type Method = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
-export type GetHandler = [<T>(data?: T) => void, (<U>(data?: U) => void)?]
+export type GetHandler = [(data?: any) => void, (<U>(data?: U) => void)?]
