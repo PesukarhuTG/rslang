@@ -3,7 +3,7 @@ import parse from 'html-react-parser';
 import styled from 'styled-components';
 import soundico from '../assets/svg/sound-icon.svg';
 import MemoryCard from '../types/Card';
-import { DBLink } from '../types/DataBaseLink';
+import { DBLink } from '../types/DataBaseTypes';
 
 interface WordsProps {
   word: MemoryCard;
