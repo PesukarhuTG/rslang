@@ -1,5 +1,8 @@
-import { DBLink, Options } from "../types/DataBaseTypes"
+import { DBLink } from '../types/DataBaseTypes';
 
+export type Options = {
+	[key: string]: string;
+};
 
 const CreateUrl = (endpoint: string, options?: Options): string => {
 	let querryUrl: string = '';
@@ -8,7 +11,7 @@ const CreateUrl = (endpoint: string, options?: Options): string => {
 		querryUrl = '?' + querryKeys.map(key => `${key}=${options[key]}`).join('&');
 	}
 	const fullUrl: string = `${DBLink}${endpoint}${querryUrl}`;
-	return fullUrl
+	return fullUrl;
 };
 
-export default CreateUrl
+export default CreateUrl;
