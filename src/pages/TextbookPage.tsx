@@ -13,8 +13,8 @@ const options = [
   { label: 'C2 - Proficiency', value: '5' },
 ];
 const TextbookPage = () => {
-  const [difficult, setDifficult] = useState('0');
-  const [currentPage, setCurrentPage] = useState('1');
+  const [difficult, setDifficult] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   return (
     <Layout>
       <Hero
@@ -33,17 +33,17 @@ const TextbookPage = () => {
       <ControlsWrapper>
         <Selector>
           <h2>Выберите уровень</h2>
-          <Select options={options} onChange={value => setDifficult(value)} />
+          <Select options={options} onChange={value => setDifficult(+value)} />
         </Selector>
         <ButtonGroup>
-          <Button label={'Спринт'} />
-          <Button label={'АудиоВызов'} />
+          <Button label="Спринт" />
+          <Button label="АудиоВызов" />
         </ButtonGroup>
         <PaginationWrapper>
-          <Pagination page={+currentPage} onChange={page => setCurrentPage(`${page}`)} total={30} />
+          <Pagination page={+currentPage} onChange={page => setCurrentPage(page)} total={30} />
         </PaginationWrapper>
       </ControlsWrapper>
-      <Album group={difficult} aPage={`${+currentPage - 1}`} />
+      <Album group={difficult} page={currentPage - 1} />
     </Layout>
   );
 };

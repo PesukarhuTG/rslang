@@ -5,15 +5,15 @@ import getData from '../utils/getData';
 import Card from './Card';
 
 interface CardAlbumProps {
-  group?: string;
-  aPage?: string;
+  group?: number;
+  page?: number;
 }
 
-const CardAlbum: React.FC<CardAlbumProps> = ({ group = '1', aPage = '1' }) => {
+const CardAlbum: React.FC<CardAlbumProps> = ({ group = 1, page = 1 }) => {
   const [albumPage, setAlbumPage] = useState<MemoryCard[]>([]);
   useEffect(() => {
-    getData('words', [cards => setAlbumPage(cards as MemoryCard[])], { group: `${group}`, page: `${aPage}` });
-  }, [group, aPage]);
+    getData('words', { group, page }).then(data => setAlbumPage(data));
+  }, [group, page]);
 
   return (
     <Album>

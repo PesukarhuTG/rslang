@@ -88,12 +88,16 @@ const Word = styled.div`
 const WordTranscription = styled.div`
   font-weight: 700;
   font-size: 36px;
+  line-height: 40px;
   color: var(--primary);
+  flex-basis: content;
+  flex-shrink: 3;
 `;
 
 const WordAudio = styled.div`
   background: url(${soundico}) no-repeat;
   width: 40px;
+  flex-basis: 45px;
   height: 40px;
   &:hover {
     cursor: pointer;
