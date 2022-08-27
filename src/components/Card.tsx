@@ -81,7 +81,6 @@ const WordDeclaration = styled.div`
   padding 0 25px 0 20px;
 `;
 const Word = styled.div`
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
