@@ -31,6 +31,7 @@ const Select: React.FC<SelectProps> = ({ options, onChange = () => {}, disabled 
 };
 
 const StyledSelect = styled(AntdSelect)`
+  width: 100%;
   height: 60px;
   min-width: 385px;
   border: 1px solid var(--primary-dark) !important;
