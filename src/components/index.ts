@@ -12,3 +12,4 @@ export { default as Pagination } from './Pagination';
 export { default as SprintGame } from './SprintGame';
 export { default as Timer } from './Timer';
 export { default as SprintWords } from './SprintWords';
+export { default as Stars } from './Stars';
