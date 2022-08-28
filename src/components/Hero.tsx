@@ -37,6 +37,10 @@ const HeroSection = styled.section`
   min-height: 620px;
   display: flex;
   align-items: center;
+
+  @media (max-width: 1100px) {
+    margin-bottom: 50px;
+  }
 `;
 
 const HeroContent = styled.div`

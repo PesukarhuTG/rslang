@@ -15,9 +15,8 @@ const Team = () => {
           <TeamItemTitle>Татьяна</TeamItemTitle>
           <TeamItemSubtitle>Team Lead | Frontend developer</TeamItemSubtitle>
           <TeamItemDescription>
-            <li>разрабатывала хххххх</li>
-            <li>страница «хххх»</li>
-            <li>учебник и словарь</li>
+            <li>Lorem ipsum dolor Excepteur sint occaecat </li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </li>
           </TeamItemDescription>
         </div>
       </TeamItem>
@@ -30,9 +29,10 @@ const Team = () => {
           <TeamItemTitle>Алексей</TeamItemTitle>
           <TeamItemSubtitle>Frontend-developer</TeamItemSubtitle>
           <TeamItemDescription>
-            <li>разрабатывал хххххх</li>
-            <li>страница «хххх»</li>
-            <li>учебник и словарь</li>
+            <li>Lorem ipsum dolor</li>
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</li>
+            <li>Lorem ipsum dolor sit amet</li>
           </TeamItemDescription>
         </div>
       </TeamItem>
@@ -45,9 +45,10 @@ const Team = () => {
           <TeamItemTitle>Сергей</TeamItemTitle>
           <TeamItemSubtitle>Frontend-developer</TeamItemSubtitle>
           <TeamItemDescription>
-            <li>разрабатывал хххххх</li>
-            <li>страница «хххх»</li>
-            <li>учебник и словарь</li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+            <li>Lorem ipsum dolor</li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
           </TeamItemDescription>
         </div>
       </TeamItem>
@@ -56,12 +57,14 @@ const Team = () => {
 };
 
 const TeamSection = styled.div`
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  align-items: flex-start;
   gap: 20px;
   margin-bottom: 80px;
 
-  @media (max-width: 1400px) {
+  @media (max-width: 1420px) {
     grid-template-columns: 1fr;
   }
 `;
@@ -69,15 +72,18 @@ const TeamSection = styled.div`
 const TeamItem = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
 
-  @media (max-width: 1400px) {
+  @media (max-width: 1420px) {
     margin-bottom: 50px;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
   }
 
-  @media (max-width: 930px) {
+  @media (max-width: 1020px) {
     flex-direction: column;
   }
 `;
@@ -85,12 +91,14 @@ const TeamItem = styled.div`
 const TeamItemImage = styled.div`
   justify-self: center;
 
-  @media (max-width: 1400px) {
+  @media (max-width: 1420px) {
     margin-right: 80px;
   }
 
-  @media (max-width: 930px) {
+  @media (max-width: 1020px) {
+    margin-top: 30px;
     margin-right: 0;
+    align-self: center;
   }
 `;
 
@@ -101,7 +109,7 @@ const TeamItemTitle = styled.h4`
   font-size: 36px;
   font-weight: 700;
 
-  @media (max-width: 1400px) {
+  @media (max-width: 1420px) {
     margin-top: 0;
   }
 
@@ -117,9 +125,9 @@ const TeamItemSubtitle = styled.p`
 `;
 
 const TeamItemDescription = styled.ul`
-  margin-bottom: 20px;
-  font-weight: 300;
-  padding-left: 40px;
+  margin-top: 40px;
+  padding-left: 30px;
+  padding-right: 10px;
 `;
 
 export default Team;

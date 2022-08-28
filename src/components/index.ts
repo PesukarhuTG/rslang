@@ -9,4 +9,8 @@ export { default as Card } from './Card';
 export { default as Title } from './Title';
 export { default as Subtitle } from './Subtitle';
 export { default as Pagination } from './Pagination';
+export { default as SprintGame } from './SprintGame';
+export { default as Timer } from './Timer';
+export { default as SprintWords } from './SprintWords';
+export { default as Stars } from './Stars';
 export { default as Album } from './CardAlbum';
