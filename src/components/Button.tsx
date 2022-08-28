@@ -21,6 +21,7 @@ const Button: React.FC<ButtonProps> = ({ label, disabled = false, type = 'primar
 const StyledButton = styled.button<{
   $type: ButtonType;
 }>`
+  display: block;
   padding: 0 40px;
   height: 60px;
   font-size: 24px;
@@ -28,6 +29,8 @@ const StyledButton = styled.button<{
   border: none;
   border-radius: 10px;
   cursor: pointer;
+  transition: 0.3s;
+
   &:hover {
     color: var(--btn-font-hover);
   }
