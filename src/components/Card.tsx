@@ -3,7 +3,7 @@ import parse from 'html-react-parser';
 import styled from 'styled-components';
 import soundico from '../assets/svg/sound-icon.svg';
 import MemoryCard from '../types/Card';
-import { DBLink } from '../types/DataBaseLink';
+import { DBLink } from '../types/DataBaseTypes';
 
 interface WordsProps {
   word: MemoryCard;
@@ -81,7 +81,6 @@ const WordDeclaration = styled.div`
   padding 0 25px 0 20px;
 `;
 const Word = styled.div`
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -89,12 +88,16 @@ const Word = styled.div`
 const WordTranscription = styled.div`
   font-weight: 700;
   font-size: 36px;
+  line-height: 40px;
   color: var(--primary);
+  flex-basis: content;
+  flex-shrink: 3;
 `;
 
 const WordAudio = styled.div`
   background: url(${soundico}) no-repeat;
   width: 40px;
+  flex-basis: 45px;
   height: 40px;
   &:hover {
     cursor: pointer;
