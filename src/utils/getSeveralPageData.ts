@@ -16,8 +16,10 @@ const getSeveralPageData = async (group: number, rage: Rage) => {
   for await (let page of generator) {
     let response = await getData('words', { group, page });
     result.push(response);
+    console.log(page);
+
   }
-  return result.flat();
+  return result.flat()
 };
 
 export default getSeveralPageData;

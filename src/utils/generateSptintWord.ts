@@ -4,6 +4,7 @@ const generateSptintWord = (wordsArray: MemoryCard[]) => {
   const CORRECT_RATE = 0.5;
   const arrLength = wordsArray.length;
   const index = Math.floor(arrLength * Math.random());
+
   const word = {
     id: wordsArray[index].id,
     word: wordsArray[index].word,
@@ -17,6 +18,7 @@ const generateSptintWord = (wordsArray: MemoryCard[]) => {
     word.wordTranslate = wordsArray[newIndex].wordTranslate;
     word.correct = false;
   }
+
   return word;
 };
 export default generateSptintWord;

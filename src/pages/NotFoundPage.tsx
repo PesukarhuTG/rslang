@@ -1,10 +1,10 @@
 import React from 'react';
-import { Layout } from '../components';
+import { Layout, SprintGame } from '../components';
 
 const NotFound = () => {
   return (
     <Layout>
-      <p className="headling">Page Not Found</p>
+      <SprintGame />
     </Layout>
   );
 };

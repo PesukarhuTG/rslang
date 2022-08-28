@@ -6,15 +6,16 @@ const { Countdown } = Statistic;
 
 interface Props {
   timeInMs?: number;
+  onFinish?: (data?: unknown) => void;
 }
 
 const time = Date.now() + 61 * 1000;
 
-const Timer: React.FC<Props> = ({ timeInMs = time }) => {
+const Timer: React.FC<Props> = ({ timeInMs = time, onFinish = () => {} }) => {
   return (
     <TimeInfo>
       time:
-      <StyledTimer className="timer" format="s" value={timeInMs} onFinish={() => console.log('Время вышло')} />
+      <StyledTimer className="timer" format="s" value={timeInMs} onFinish={onFinish} />
       sec
     </TimeInfo>
   );
