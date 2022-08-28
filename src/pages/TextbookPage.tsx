@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Hero, Album, Select, Button, Pagination } from '../components';
+import { Hero, Album, Select, Button, Pagination, Subtitle } from '../components';
 import Layout from '../components/Layout/Layout';
 import textBookImg from '../assets/svg/hero-textbook-logo.svg';
 import styled from 'styled-components';
@@ -32,12 +32,12 @@ const TextbookPage = () => {
       />
       <ControlsWrapper>
         <Selector>
-          <h2>Выберите уровень</h2>
+          <Subtitle content="Выберите уровень" />
           <Select options={options} onChange={value => setDifficult(+value)} />
         </Selector>
         <ButtonGroup>
           <Button label="Спринт" />
-          <Button label="АудиоВызов" />
+          <Button label="Аудиовызов" />
         </ButtonGroup>
         <PaginationWrapper>
           <Pagination page={+currentPage} onChange={page => setCurrentPage(page)} total={30} />
@@ -47,6 +47,7 @@ const TextbookPage = () => {
     </Layout>
   );
 };
+
 const ControlsWrapper = styled.div`
   display: grid;
   grid-auto-flow: row;
@@ -56,6 +57,7 @@ const ControlsWrapper = styled.div`
   grid-row-gap: 90px;
   margin-bottom: 70px;
 `;
+
 const Selector = styled.div`
   grid-area: sel;
   width: fit-content;
@@ -63,6 +65,7 @@ const Selector = styled.div`
     margin-bottom: 40px;
   }
 `;
+
 const ButtonGroup = styled.div`
   grid-area: btn;
   display: flex;
@@ -70,8 +73,10 @@ const ButtonGroup = styled.div`
   justify-content: end;
   align-items: flex-end;
 `;
+
 const PaginationWrapper = styled.div`
   grid-area: pag;
   justify-self: center;
 `;
+
 export default TextbookPage;
