@@ -28,7 +28,8 @@ const FlashCard: React.FC<WordsProps> = ({ word }) => {
       <WordDeclaration>
         <Word>
           <WordTranscription>
-            {word.word} {word.transcription}
+            <div>{word.word}</div>
+            <div>{word.transcription}</div>
           </WordTranscription>
           <WordAudio onClick={play ? playAudio : () => {}}></WordAudio>
         </Word>
