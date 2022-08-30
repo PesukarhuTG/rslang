@@ -6,19 +6,21 @@ async function* generateData(start: number, end: number) {
     yield i;
   }
 }
+
 type Rage = {
   start: number;
   end: number;
 };
+
 const getSeveralPageData = async (group: number, rage: Rage) => {
   let generator = generateData(rage.start, rage.end);
   let result: MemoryCard[] = [];
+
   for await (let page of generator) {
     let response = await getData('words', { group, page });
     result.push(response);
-    console.log(page);
-
   }
+
   return result.flat()
 };
 

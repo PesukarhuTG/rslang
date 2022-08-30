@@ -13,7 +13,7 @@ const generateSptintWord = (wordsArray: MemoryCard[]) => {
   };
 
   if (Math.random() < CORRECT_RATE) {
-    const shift = Math.floor(19 * Math.random() + 1);
+    const shift = Math.floor((wordsArray.length - 1) * Math.random() + 1);
     const newIndex = (index + shift) % arrLength;
     word.wordTranslate = wordsArray[newIndex].wordTranslate;
     word.correct = false;
