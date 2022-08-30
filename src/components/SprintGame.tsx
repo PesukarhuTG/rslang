@@ -53,6 +53,18 @@ const SprintGame: React.FC<SprintGameProps> = ({ group = 0, page = undefined }) 
     setTimer(Date.now() + 61000);
   }, [group]);
 
+  const userPressHandle = (event: KeyboardEvent) => {
+    const { key } = event;
+    if (key === 'ArrowLeft') sprintClick(true);
+    if (key === 'ArrowRight') sprintClick(false);
+  };
+  useEffect(() => {
+    if (timer) {
+      window.addEventListener('keydown', userPressHandle);
+    }
+    return () => window.removeEventListener('keydown', userPressHandle);
+  });
+
   if (!words.length) return <Spin />;
   if (!timer) return <Modal visible={true}></Modal>;
 
@@ -75,7 +87,7 @@ const SprintGame: React.FC<SprintGameProps> = ({ group = 0, page = undefined }) 
         setCurrentWord(generatedWord);
       } else {
         if (!currentPage) {
-          setTimer(0);
+          setTimer(Date.now() + 5);
         } else {
           setCurrentPage(prev => (prev as number) - 1);
         }
