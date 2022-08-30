@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import closeIcon from '../assets/svg/close-icon.svg';
 
 interface ModalProps {
-  visible: boolean;
-  children: React.ReactNode;
-  onClose: () => void;
+  visible?: boolean;
+  children?: React.ReactNode;
+  onClose?: () => void;
 }
 
 const Modal: React.FC<ModalProps> = ({ visible = false, children, onClose = () => {} }) => {
