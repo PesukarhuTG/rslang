@@ -14,3 +14,5 @@ export { default as Timer } from './Timer';
 export { default as SprintWords } from './SprintWords';
 export { default as Stars } from './Stars';
 export { default as Album } from './CardAlbum';
+export { default as Spinner } from './Spinner';
+export { default as Modal } from './Modal';

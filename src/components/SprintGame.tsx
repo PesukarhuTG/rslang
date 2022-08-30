@@ -48,7 +48,6 @@ const SprintGame: React.FC<SprintGameProps> = ({ group = 0 }) => {
   const sprintClick = (state: boolean) => {
     if (isGame) {
       const [ejectedWord, newWords] = ejectByID(currentWord.id, words);
-      console.log(ejectedWord, newWords.length);
 
       if (currentWord.correct === state) {
         if (multiplier < 3) setMultiplier(multiplier + 1);

@@ -22,9 +22,14 @@ const Layout: React.FC<LayoutProps> = ({ children, disableHeader = false, disabl
 const Container = styled.div`
   max-width: 1440px;
   width: 100%;
+  min-height: 100vh;
   margin: 0 auto;
   padding-left: 40px;
   padding-right: 40px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 export default Layout;

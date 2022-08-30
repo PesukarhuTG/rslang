@@ -28,8 +28,18 @@ const Album = styled.div`
   margin: 0 auto;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   justify-content: space-between;
-  gap: 20px;
+  gap: 40px 20px;
+  margin-bottom: 50px;
+
+  @media (max-width: 1490px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 1020px) {
+    grid-template-columns: 1fr;
+  }
 `;
+
 export default CardAlbum;
