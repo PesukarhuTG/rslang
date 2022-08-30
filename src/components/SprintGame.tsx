@@ -21,6 +21,14 @@ interface SprintGameProps {
 }
 
 const SprintGame: React.FC<SprintGameProps> = ({ group = 0, page = undefined }) => {
+  // score - количество баллов после игры
+  //correct - массив с словами, на которые пользователь дал правильный ответ
+  //wrong - массив с словами, на которые пользователь дал не правильный ответ
+
+  const [score, setScore] = useState<number>(0);
+  const [correct, setCorrect] = useState<MemoryCard[]>([]);
+  const [wrong, setWrong] = useState<MemoryCard[]>([]);
+
   const [words, setWords] = useState<MemoryCard[]>([]);
   const [currentWord, setCurrentWord] = useState<Word>({
     id: '',
@@ -30,9 +38,6 @@ const SprintGame: React.FC<SprintGameProps> = ({ group = 0, page = undefined }) 
   });
   const [currentPage, setCurrentPage] = useState<number | undefined>(page);
   const [multiplier, setMultiplier] = useState(1);
-  const [score, setScore] = useState<number>(0);
-  const [correct, setCorrect] = useState<MemoryCard[]>([]);
-  const [wrong, setWrong] = useState<MemoryCard[]>([]);
   const [timer, setTimer] = useState<number>(0);
 
   useEffect(() => {
