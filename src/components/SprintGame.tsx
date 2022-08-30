@@ -7,7 +7,8 @@ import Stars from './Stars';
 import SprintWords from './SprintWords';
 import MemoryCard from '../types/Card';
 import { ejectByID, generateSptintWord, getSeveralPageData } from '../utils';
-import { Modal, Spin } from 'antd';
+import Modal from './Modal';
+import Spin from './Spinner';
 
 type Word = {
   id: string;
