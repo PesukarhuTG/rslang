@@ -7,9 +7,10 @@ import { DBLink } from '../types/DataBaseTypes';
 
 interface WordsProps {
   word: MemoryCard;
+  level: number;
 }
 
-const FlashCard: React.FC<WordsProps> = ({ word }) => {
+const FlashCard: React.FC<WordsProps> = ({ word, level }) => {
   const [play, setPlay] = useState<boolean>(true);
   const playAudio = () => {
     setPlay(!play);
@@ -27,11 +28,11 @@ const FlashCard: React.FC<WordsProps> = ({ word }) => {
       <CardImage style={{ backgroundImage: `url(${DBLink}${word.image})` }} />
       <WordDeclaration>
         <Word>
-          <WordTranscription>
+          <WordTranscription $level={level + 1}>
             <div>{word.word}</div>
             <div>{word.transcription}</div>
           </WordTranscription>
-          <WordAudio onClick={play ? playAudio : () => {}}></WordAudio>
+          <WordAudio $level={level + 1} onClick={play ? playAudio : () => {}}></WordAudio>
         </Word>
         <WordTranslation children={word.wordTranslate} />
       </WordDeclaration>
@@ -94,15 +95,41 @@ const Word = styled.div`
   align-items: center;
 `;
 
-const WordTranscription = styled.div`
+const WordTranscription = styled.div<{
+  $level: number;
+}>`
   flex-basis: content;
   flex-shrink: 3;
   font-weight: 700;
   font-size: 30px;
-  color: var(--primary);
+  color: ${({ $level }) => `var(--language-level-${$level})`};
 `;
 
-const WordAudio = styled.div`
+const WordAudio = styled.div<{
+  $level: number;
+}>`
+  ${({ $level }) => {
+    if ($level === 1)
+      return `filter: invert(0%) sepia(71%) saturate(499%) hue-rotate(26deg) brightness(88%) contrast(87%);`;
+
+    if ($level === 2)
+      return `filter: invert(0%) sepia(91%) saturate(585%) hue-rotate(16deg) brightness(107%) contrast(101%);`;
+
+    if ($level === 3)
+      return `filter: invert(1%) sepia(81%) saturate(1662%) hue-rotate(77deg) brightness(101%) contrast(92%);`;
+
+    if ($level === 4)
+      return `filter: invert(100%) sepia(100%) saturate(6757%) hue-rotate(237deg) brightness(100%) contrast(93%);`;
+
+    if ($level === 5)
+      return `filter: invert(60%) sepia(99%) saturate(636%) hue-rotate(166deg) brightness(102%) contrast(102%);`;
+
+    if ($level === 6)
+      return `filter: invert(50%) sepia(85%) saturate(6763%) hue-rotate(265deg) brightness(97%) contrast(97%);`;
+
+    if ($level === 7)
+      return `filter: invert(66%) sepia(82%) saturate(1895%) hue-rotate(309deg) brightness(99%) contrast(94%);`;
+  }}
   background: url(${soundico}) no-repeat;
   width: 40px;
   flex-basis: 45px;

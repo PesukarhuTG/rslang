@@ -43,7 +43,7 @@ const TextbookPage = () => {
           <Pagination page={+currentPage} onChange={page => setCurrentPage(page)} total={30} />
         </PaginationWrapper>
       </ControlsWrapper>
-      <Album group={difficult} page={currentPage - 1} />
+      <Album group={difficult} page={currentPage - 1} level={difficult} />
     </Layout>
   );
 };
