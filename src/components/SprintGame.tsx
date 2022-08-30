@@ -7,7 +7,7 @@ import Stars from './Stars';
 import SprintWords from './SprintWords';
 import MemoryCard from '../types/Card';
 import { ejectByID, generateSptintWord, getSeveralPageData } from '../utils';
-import { Spin } from 'antd';
+import { Modal, Spin } from 'antd';
 
 type Word = {
   id: string;
@@ -17,36 +17,41 @@ type Word = {
 };
 interface SprintGameProps {
   group?: number;
+  page?: number;
 }
 
-const SprintGame: React.FC<SprintGameProps> = ({ group = 0 }) => {
+const SprintGame: React.FC<SprintGameProps> = ({ group = 0, page = undefined }) => {
   const [words, setWords] = useState<MemoryCard[]>([]);
-
   const [currentWord, setCurrentWord] = useState<Word>({
     id: '',
     word: '',
     wordTranslate: '',
     correct: true,
   });
-
+  const [currentPage, setCurrentPage] = useState<number | undefined>(page);
   const [multiplier, setMultiplier] = useState(1);
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState<number>(0);
   const [correct, setCorrect] = useState<MemoryCard[]>([]);
   const [wrong, setWrong] = useState<MemoryCard[]>([]);
-  const [isGame, setIsGame] = useState(true);
+  const [timer, setTimer] = useState<number>(0);
 
   useEffect(() => {
-    getSeveralPageData(group, { start: 0, end: 0 }).then(data => {
+    getSeveralPageData(group, currentPage).then(data => {
       const defaultWord = generateSptintWord(data);
       setWords(data);
       setCurrentWord(defaultWord);
     });
+  }, [group, currentPage]);
+
+  useEffect(() => {
+    setTimer(Date.now() + 61000);
   }, [group]);
 
   if (!words.length) return <Spin />;
+  if (!timer) return <Modal visible={true}></Modal>;
 
   const sprintClick = (state: boolean) => {
-    if (isGame) {
+    if (timer) {
       const [ejectedWord, newWords] = ejectByID(currentWord.id, words);
 
       if (currentWord.correct === state) {
@@ -63,13 +68,17 @@ const SprintGame: React.FC<SprintGameProps> = ({ group = 0 }) => {
         setWords(newWords);
         setCurrentWord(generatedWord);
       } else {
-        gameOver();
+        if (!currentPage) {
+          setTimer(0);
+        } else {
+          setCurrentPage(prev => (prev as number) - 1);
+        }
       }
     }
   };
 
   const gameOver = () => {
-    setIsGame(false);
+    setTimer(0);
     console.log('correct', correct);
     console.log('wrong', wrong);
   };
@@ -80,7 +89,7 @@ const SprintGame: React.FC<SprintGameProps> = ({ group = 0 }) => {
         <Stars count={multiplier} />
 
         <StatusCounters>
-          <Timer onFinish={gameOver} />
+          <Timer onFinish={gameOver} timeInMs={timer} />
           <Score score={score} />
         </StatusCounters>
       </GameStatus>

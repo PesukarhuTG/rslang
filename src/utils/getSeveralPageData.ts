@@ -1,27 +1,24 @@
 import MemoryCard from '../types/Card';
 import getData from './getData';
 
-async function* generateData(start: number, end: number) {
-  for (let i = start; i <= end; i++) {
-    yield i;
+const getSeveralPageData = async (group: number, page?: number) => {
+  if (typeof page === 'number') return await getData('words', { group, page });
+  const PAGES_IN_GAME: number = 5;
+  const TOTAL_PAGES: number = 30;
+  const shufflePages: number[] = [];
+  while (shufflePages.length < PAGES_IN_GAME) {
+    const pageIndex = Math.floor(TOTAL_PAGES * Math.random());
+    if (!shufflePages.includes(pageIndex)) shufflePages.push(pageIndex);
   }
-}
 
-type Rage = {
-  start: number;
-  end: number;
-};
+  const result: MemoryCard[] = [];
 
-const getSeveralPageData = async (group: number, rage: Rage) => {
-  let generator = generateData(rage.start, rage.end);
-  let result: MemoryCard[] = [];
-
-  for await (let page of generator) {
+  for await (let page of shufflePages) {
     let response = await getData('words', { group, page });
     result.push(response);
   }
 
-  return result.flat()
+  return result.flat();
 };
 
 export default getSeveralPageData;
