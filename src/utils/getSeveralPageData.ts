@@ -1,7 +1,7 @@
 import MemoryCard from '../types/Card';
 import getData from './getData';
 
-const getSeveralPageData = async (group: number, page?: number) => {
+const getSeveralPageData = async (group: number, page?: number | null) => {
   if (typeof page === 'number') return await getData('words', { group, page });
   const PAGES_IN_GAME: number = 5;
   const TOTAL_PAGES: number = 30;

@@ -17,11 +17,11 @@ type Word = {
   correct: boolean;
 };
 interface SprintGameProps {
-  group?: number;
+  difficult?: number;
   page?: number;
 }
 
-const SprintGame: React.FC<SprintGameProps> = ({ group = 0, page = undefined }) => {
+const SprintGame: React.FC<SprintGameProps> = ({ difficult = 0, page = null }) => {
   // score - количество баллов после игры
   //correct - массив с словами, на которые пользователь дал правильный ответ
   //wrong - массив с словами, на которые пользователь дал не правильный ответ
@@ -37,21 +37,21 @@ const SprintGame: React.FC<SprintGameProps> = ({ group = 0, page = undefined }) 
     wordTranslate: '',
     correct: true,
   });
-  const [currentPage, setCurrentPage] = useState<number | undefined>(page);
-  const [multiplier, setMultiplier] = useState(1);
+  const [currentPage, setCurrentPage] = useState<number | null>(page);
+  const [multiplier, setMultiplier] = useState<number>(1);
   const [timer, setTimer] = useState<number>(0);
 
   useEffect(() => {
-    getSeveralPageData(group, currentPage).then(data => {
+    getSeveralPageData(difficult, currentPage).then(data => {
       const defaultWord = generateSptintWord(data);
       setWords(data);
       setCurrentWord(defaultWord);
     });
-  }, [group, currentPage]);
+  }, [difficult, currentPage]);
 
   useEffect(() => {
     setTimer(Date.now() + 61000);
-  }, [group]);
+  }, [difficult]);
 
   const userPressHandle = (event: KeyboardEvent) => {
     const { key } = event;
