@@ -7,9 +7,10 @@ import { DBLink } from '../types/DataBaseTypes';
 
 interface WordsProps {
   word: MemoryCard;
+  level: number;
 }
 
-const FlashCard: React.FC<WordsProps> = ({ word }) => {
+const FlashCard: React.FC<WordsProps> = ({ word, level }) => {
   const [play, setPlay] = useState<boolean>(true);
   const playAudio = () => {
     setPlay(!play);
@@ -25,13 +26,13 @@ const FlashCard: React.FC<WordsProps> = ({ word }) => {
   return (
     <CardBody>
       <CardImage style={{ backgroundImage: `url(${DBLink}${word.image})` }} />
-      <WordDeclaration>
+      <WordDeclaration $level={level}>
         <Word>
-          <WordTranscription>
+          <WordTranscription $level={level}>
             <div>{word.word}</div>
             <div>{word.transcription}</div>
           </WordTranscription>
-          <WordAudio onClick={play ? playAudio : () => {}}></WordAudio>
+          <WordAudio $level={level} onClick={play ? playAudio : () => {}}></WordAudio>
         </Word>
         <WordTranslation children={word.wordTranslate} />
       </WordDeclaration>
@@ -79,13 +80,15 @@ const CardImage = styled.div`
   }
 `;
 
-const WordDeclaration = styled.div`
+const WordDeclaration = styled.div<{
+  $level: number;
+}>`
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   padding: 20px;
-  border-bottom: 1px solid var(--primary);
+  border-bottom: 1px solid ${({ $level }) => `var(--language-level-${$level + 1})`};
 `;
 
 const Word = styled.div`
@@ -94,15 +97,41 @@ const Word = styled.div`
   align-items: center;
 `;
 
-const WordTranscription = styled.div`
+const WordTranscription = styled.div<{
+  $level: number;
+}>`
   flex-basis: content;
   flex-shrink: 3;
   font-weight: 700;
   font-size: 30px;
-  color: var(--primary);
+  color: ${({ $level }) => `var(--language-level-${$level + 1})`};
 `;
 
-const WordAudio = styled.div`
+const WordAudio = styled.div<{
+  $level: number;
+}>`
+  ${({ $level }) => {
+    if ($level === 0)
+      return `filter: invert(0%) sepia(71%) saturate(499%) hue-rotate(26deg) brightness(88%) contrast(87%);`;
+
+    if ($level === 1)
+      return `filter: invert(5%) sepia(83%) saturate(299%) hue-rotate(11deg) brightness(99%) contrast(103%);`;
+
+    if ($level === 2)
+      return `filter: invert(30%) sepia(76%) saturate(6416%) hue-rotate(172deg) brightness(98%) contrast(93%);`;
+
+    if ($level === 3)
+      return `filter: invert(0%) sepia(79%) saturate(1404%) hue-rotate(298deg) brightness(112%) contrast(92%);`;
+
+    if ($level === 4)
+      return `filter: invert(0%) sepia(93%) saturate(6448%) hue-rotate(208deg) brightness(76%) contrast(94%);`;
+
+    if ($level === 5)
+      return `filter: invert(0%) sepia(77%) saturate(673%) hue-rotate(291deg) brightness(95%) contrast(109%);`;
+
+    if ($level === 6)
+      return `filter: invert(50%) sepia(93%) saturate(509%) hue-rotate(283deg) brightness(99%) contrast(92%);`;
+  }}
   background: url(${soundico}) no-repeat;
   width: 40px;
   flex-basis: 45px;
