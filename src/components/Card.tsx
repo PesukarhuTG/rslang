@@ -26,7 +26,7 @@ const FlashCard: React.FC<WordsProps> = ({ word, level }) => {
   return (
     <CardBody>
       <CardImage style={{ backgroundImage: `url(${DBLink}${word.image})` }} />
-      <WordDeclaration>
+      <WordDeclaration $level={level}>
         <Word>
           <WordTranscription $level={level}>
             <div>{word.word}</div>
@@ -80,13 +80,15 @@ const CardImage = styled.div`
   }
 `;
 
-const WordDeclaration = styled.div`
+const WordDeclaration = styled.div<{
+  $level: number;
+}>`
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   padding: 20px;
-  border-bottom: 1px solid var(--primary);
+  border-bottom: 1px solid ${({ $level }) => `var(--language-level-${$level + 1})`};
 `;
 
 const Word = styled.div`
@@ -113,22 +115,22 @@ const WordAudio = styled.div<{
       return `filter: invert(0%) sepia(71%) saturate(499%) hue-rotate(26deg) brightness(88%) contrast(87%);`;
 
     if ($level === 1)
-      return `filter: invert(0%) sepia(91%) saturate(585%) hue-rotate(16deg) brightness(107%) contrast(101%);`;
+      return `filter: invert(5%) sepia(83%) saturate(299%) hue-rotate(11deg) brightness(99%) contrast(103%);`;
 
     if ($level === 2)
-      return `filter: invert(1%) sepia(81%) saturate(1662%) hue-rotate(77deg) brightness(101%) contrast(92%);`;
+      return `filter: invert(30%) sepia(76%) saturate(6416%) hue-rotate(172deg) brightness(98%) contrast(93%);`;
 
     if ($level === 3)
-      return `filter: invert(100%) sepia(100%) saturate(6757%) hue-rotate(237deg) brightness(100%) contrast(93%);`;
+      return `filter: invert(0%) sepia(79%) saturate(1404%) hue-rotate(298deg) brightness(112%) contrast(92%);`;
 
     if ($level === 4)
-      return `filter: invert(60%) sepia(99%) saturate(636%) hue-rotate(166deg) brightness(102%) contrast(102%);`;
+      return `filter: invert(0%) sepia(93%) saturate(6448%) hue-rotate(208deg) brightness(76%) contrast(94%);`;
 
     if ($level === 5)
-      return `filter: invert(50%) sepia(85%) saturate(6763%) hue-rotate(265deg) brightness(97%) contrast(97%);`;
+      return `filter: invert(0%) sepia(77%) saturate(673%) hue-rotate(291deg) brightness(95%) contrast(109%);`;
 
     if ($level === 6)
-      return `filter: invert(66%) sepia(82%) saturate(1895%) hue-rotate(309deg) brightness(99%) contrast(94%);`;
+      return `filter: invert(50%) sepia(93%) saturate(509%) hue-rotate(283deg) brightness(99%) contrast(92%);`;
   }}
   background: url(${soundico}) no-repeat;
   width: 40px;
