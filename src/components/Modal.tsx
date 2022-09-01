@@ -12,7 +12,7 @@ const Modal: React.FC<ModalProps> = ({ visible = false, children, onClose = () =
   return (
     <>
       {visible && (
-        <ModalOverlay onClick={onClose}>
+        <ModalOverlay>
           <ModalWindow>
             <ButtonClose onClick={onClose} />
             <ModalMessage>{children}</ModalMessage>
@@ -70,11 +70,12 @@ const ButtonClose = styled.button`
 `;
 
 const ModalMessage = styled.div`
-  height: 100%;
+  height: 80vh;
+  width: 100%;
+
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 `;
 
 export default Modal;

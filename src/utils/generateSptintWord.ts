@@ -11,7 +11,7 @@ const generateSptintWord = (wordsArray: MemoryCard[]) => {
     wordTranslate: wordsArray[index].wordTranslate,
     correct: true,
   };
-
+  if (wordsArray.length === 1) return word;
   if (Math.random() < CORRECT_RATE) {
     const shift = Math.floor((wordsArray.length - 1) * Math.random() + 1);
     const newIndex = (index + shift) % arrLength;

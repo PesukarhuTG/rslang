@@ -9,6 +9,7 @@ import MemoryCard from '../types/Card';
 import { ejectByID, generateSptintWord, getSeveralPageData } from '../utils';
 import Modal from './Modal';
 import Spin from './Spinner';
+import ModalStatistic from './ModalStatistic';
 
 type Word = {
   id: string;
@@ -17,11 +18,11 @@ type Word = {
   correct: boolean;
 };
 interface SprintGameProps {
-  difficult?: number;
+  level?: number;
   page?: number;
 }
 
-const SprintGame: React.FC<SprintGameProps> = ({ difficult = 0, page = null }) => {
+const SprintGame: React.FC<SprintGameProps> = ({ level = 0, page = null }) => {
   // score - количество баллов после игры
   //correct - массив с словами, на которые пользователь дал правильный ответ
   //wrong - массив с словами, на которые пользователь дал не правильный ответ
@@ -40,18 +41,22 @@ const SprintGame: React.FC<SprintGameProps> = ({ difficult = 0, page = null }) =
   const [currentPage, setCurrentPage] = useState<number | null>(page);
   const [multiplier, setMultiplier] = useState<number>(1);
   const [timer, setTimer] = useState<number>(0);
+  const [isModal, setIsModal] = useState<boolean>(false);
+  const [round, setRound] = useState<number>(0);
+
+  const TIMER_IN_MS: number = Date.now() + 11000;
 
   useEffect(() => {
-    getSeveralPageData(difficult, currentPage).then(data => {
+    getSeveralPageData(level, currentPage).then(data => {
       const defaultWord = generateSptintWord(data);
       setWords(data);
       setCurrentWord(defaultWord);
     });
-  }, [difficult, currentPage]);
+  }, [level, currentPage, round]);
 
   useEffect(() => {
-    setTimer(Date.now() + 61000);
-  }, [difficult]);
+    setTimer(TIMER_IN_MS);
+  }, [level, round]);
 
   const userPressHandle = (event: KeyboardEvent) => {
     const { key } = event;
@@ -66,7 +71,6 @@ const SprintGame: React.FC<SprintGameProps> = ({ difficult = 0, page = null }) =
   });
 
   if (!words.length) return <Spin />;
-  if (!timer) return <Modal visible={true}></Modal>;
 
   const sprintClick = (state: boolean) => {
     if (timer) {
@@ -97,10 +101,20 @@ const SprintGame: React.FC<SprintGameProps> = ({ difficult = 0, page = null }) =
 
   const gameOver = () => {
     setTimer(0);
-    console.log('correct', correct);
-    console.log('wrong', wrong);
+    setIsModal(true);
   };
 
+  const gameStart = () => {
+    setTimer(TIMER_IN_MS);
+    setIsModal(false);
+    setCorrect([]);
+    setWrong([]);
+    setRound(prev => prev + 1);
+    setScore(0);
+  };
+  const modalClose = () => {
+    setIsModal(false);
+  };
   return (
     <GameContainer>
       <GameStatus>
@@ -118,6 +132,9 @@ const SprintGame: React.FC<SprintGameProps> = ({ difficult = 0, page = null }) =
         <Button label="Верно" onClick={() => sprintClick(true)} />
         <Button label="Неверно" type="wrong" onClick={() => sprintClick(false)} />
       </GameButtons>
+      <Modal visible={isModal} onClose={modalClose}>
+        <ModalStatistic correct={correct} wrong={wrong} score={score} onButtonClick={gameStart} />
+      </Modal>
     </GameContainer>
   );
 };
@@ -125,11 +142,12 @@ const SprintGame: React.FC<SprintGameProps> = ({ difficult = 0, page = null }) =
 const GameContainer = styled.div`
   max-width: 735px;
   width: 100%;
+  margin: 50px auto;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 50px auto;
 `;
 
 const GameStatus = styled.div`
