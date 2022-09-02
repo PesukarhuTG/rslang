@@ -19,7 +19,7 @@ const TextbookPage = () => {
 
   if (isGame)
     return (
-      <Layout>
+      <Layout disableFooter={true}>
         <SprintGame level={level} page={currentPage - 1} gameEnd={() => setISGame(false)} />
       </Layout>
     );
@@ -51,7 +51,7 @@ const TextbookPage = () => {
           <Pagination page={+currentPage} onChange={page => setCurrentPage(page)} total={30} />
         </PaginationWrapper>
       </ControlsWrapper>
-      <Album group={level} page={currentPage - 1} />
+      <Album group={level} page={currentPage - 1} level={level} />
     </Layout>
   );
 };
