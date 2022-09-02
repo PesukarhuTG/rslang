@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import headerBtnIco from '../../assets/svg/header-btn-ico.svg';
 import { Link, useLocation } from 'react-router-dom';
+import ModalAuthorization from '../ModalAuthorization';
 
 const Header = () => {
+  const [isVisibleModal, setIsVisibleModal] = useState<boolean>(false);
+
   return (
     <AppHeader>
       <HeaderLogo to="/">RSS Lang</HeaderLogo>
@@ -14,7 +17,8 @@ const Header = () => {
           <HeaderNavItem to="/audio" label="Аудиовызов" />
           <HeaderNavItem to="/statistic" label="Статистика" />
         </HeaderNav>
-        <HeaderBtn>Гость</HeaderBtn>
+        <HeaderBtn onClick={() => setIsVisibleModal(true)}>Гость</HeaderBtn>
+        <ModalAuthorization visible={isVisibleModal} onClose={() => setIsVisibleModal(false)} />
       </Container>
     </AppHeader>
   );

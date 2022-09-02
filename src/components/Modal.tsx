@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import closeIcon from '../assets/svg/close-icon.svg';
 
-interface ModalProps {
+export interface ModalProps {
   visible?: boolean;
   children?: React.ReactNode;
   onClose?: () => void;
@@ -12,18 +12,19 @@ const Modal: React.FC<ModalProps> = ({ visible = false, children, onClose = () =
   return (
     <>
       {visible && (
-        <ModalOverlay>
+        <ModalContainer>
+          <ModalOverlay onClick={onClose}></ModalOverlay>
           <ModalWindow>
             <ButtonClose onClick={onClose} />
             <ModalMessage>{children}</ModalMessage>
           </ModalWindow>
-        </ModalOverlay>
+        </ModalContainer>
       )}
     </>
   );
 };
 
-const ModalOverlay = styled.div`
+const ModalContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -32,6 +33,14 @@ const ModalOverlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const ModalOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: var(--modal-background);
   z-index: 1;
 `;

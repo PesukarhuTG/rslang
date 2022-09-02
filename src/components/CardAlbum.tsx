@@ -7,9 +7,10 @@ import Card from './Card';
 interface CardAlbumProps {
   group?: number;
   page?: number;
+  level?: number;
 }
 
-const CardAlbum: React.FC<CardAlbumProps> = ({ group = 1, page = 1 }) => {
+const CardAlbum: React.FC<CardAlbumProps> = ({ group = 1, page = 1, level = 0 }) => {
   const [albumPage, setAlbumPage] = useState<MemoryCard[]>([]);
   useEffect(() => {
     getData('words', { group, page }).then(data => setAlbumPage(data));
@@ -18,7 +19,7 @@ const CardAlbum: React.FC<CardAlbumProps> = ({ group = 1, page = 1 }) => {
   return (
     <Album>
       {albumPage.map(word => (
-        <Card word={word} key={word.id} />
+        <Card word={word} key={word.id} level={level} />
       ))}
     </Album>
   );
