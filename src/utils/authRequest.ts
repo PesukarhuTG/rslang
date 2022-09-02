@@ -8,9 +8,7 @@ export const registrationUser = async (
   email: string,
   password: string
 ): Promise<AxiosResponse<RegistrationResponse>> => {
-  return axiosApi
-    .post<RegistrationResponse>(createUrl('users'), { name, email, password })
-    .then(response => console.log(response.data)) as Promise<AxiosResponse<RegistrationResponse>>;
+  return axiosApi.post<RegistrationResponse>(createUrl('users'), { name, email, password });
 };
 
 export const loginUser = async (email: string, password: string): Promise<AxiosResponse<LoginResponse>> => {
