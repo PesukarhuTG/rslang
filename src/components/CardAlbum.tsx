@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import MemoryCard from '../types/Card';
+import MemoryCard from '../types/responses/Card';
 import getData from '../utils/getData';
 import Card from './Card';
 

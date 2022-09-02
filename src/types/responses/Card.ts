@@ -14,4 +14,5 @@ interface MemoryCard {
   textMeaningTranslate: string;
   textExampleTranslate: string;
 }
+
 export default MemoryCard;
