@@ -1,12 +1,8 @@
 import React from 'react';
-import { Layout, SprintGame } from '../components';
+import { Layout } from '../components';
 
 const NotFound = () => {
-  return (
-    <Layout>
-      <SprintGame />
-    </Layout>
-  );
+  return <Layout></Layout>;
 };
 
 export default NotFound;
