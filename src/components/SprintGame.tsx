@@ -64,7 +64,7 @@ const SprintGame: React.FC<SprintGameProps> = ({ level = 0, page = null, gameEnd
 
   useEffect(() => {
     if (loading) return;
-    setTimer(Date.now() + 61000);
+    setTimer(Date.now() + 31000);
   }, [loading]);
 
   const userPressHandle = (event: KeyboardEvent) => {
