@@ -20,9 +20,10 @@ type Word = {
 interface SprintGameProps {
   level?: number;
   page?: number;
+  gameEnd?: () => void;
 }
 
-const SprintGame: React.FC<SprintGameProps> = ({ level = 0, page = null }) => {
+const SprintGame: React.FC<SprintGameProps> = ({ level = 0, page = null, gameEnd = () => {} }) => {
   // score - количество баллов после игры
   //correct - массив с словами, на которые пользователь дал правильный ответ
   //wrong - массив с словами, на которые пользователь дал не правильный ответ
@@ -39,38 +40,48 @@ const SprintGame: React.FC<SprintGameProps> = ({ level = 0, page = null }) => {
     correct: true,
   });
   const [currentPage, setCurrentPage] = useState<number | null>(page);
+
   const [multiplier, setMultiplier] = useState<number>(1);
   const [timer, setTimer] = useState<number>(0);
   const [isModal, setIsModal] = useState<boolean>(false);
   const [round, setRound] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  const TIMER_IN_MS: number = Date.now() + 11000;
+  useEffect(() => {
+    setCurrentPage(page);
+    setLoading(loading);
+  }, [loading, page]);
 
   useEffect(() => {
     getSeveralPageData(level, currentPage).then(data => {
       const defaultWord = generateSptintWord(data);
+      setIsModal(false);
       setWords(data);
       setCurrentWord(defaultWord);
+      setLoading(false);
     });
   }, [level, currentPage, round]);
 
   useEffect(() => {
-    setTimer(TIMER_IN_MS);
-  }, [level, round]);
+    if (loading) return;
+    setTimer(Date.now() + 61000);
+  }, [loading]);
 
   const userPressHandle = (event: KeyboardEvent) => {
     const { key } = event;
+    event.preventDefault();
     if (key === 'ArrowLeft') sprintClick(true);
     if (key === 'ArrowRight') sprintClick(false);
   };
+
   useEffect(() => {
     if (timer) {
-      window.addEventListener('keydown', userPressHandle);
+      window.addEventListener('keyup', userPressHandle, { once: true });
     }
-    return () => window.removeEventListener('keydown', userPressHandle);
+    return () => window.removeEventListener('keyup', userPressHandle);
   });
 
-  if (!words.length) return <Spin />;
+  if (loading) return <Spin />;
 
   const sprintClick = (state: boolean) => {
     if (timer) {
@@ -104,22 +115,22 @@ const SprintGame: React.FC<SprintGameProps> = ({ level = 0, page = null }) => {
     setIsModal(true);
   };
 
-  const gameStart = () => {
-    setTimer(TIMER_IN_MS);
-    setIsModal(false);
-    setCorrect([]);
-    setWrong([]);
-    setRound(prev => prev + 1);
-    setScore(0);
-  };
   const modalClose = () => {
     setIsModal(false);
+    gameEnd();
+  };
+
+  const gameRestart = () => {
+    setRound(prev => prev + 1);
+    setLoading(true);
+    setCorrect([]);
+    setWrong([]);
+    setScore(0);
   };
   return (
     <GameContainer>
       <GameStatus>
         <Stars count={multiplier} />
-
         <StatusCounters>
           <Timer onFinish={gameOver} timeInMs={timer} />
           <Score score={score} />
@@ -133,7 +144,7 @@ const SprintGame: React.FC<SprintGameProps> = ({ level = 0, page = null }) => {
         <Button label="Неверно" type="wrong" onClick={() => sprintClick(false)} />
       </GameButtons>
       <Modal visible={isModal} onClose={modalClose}>
-        <ModalStatistic correct={correct} wrong={wrong} score={score} onButtonClick={gameStart} />
+        <ModalStatistic correct={correct} wrong={wrong} score={score} onButtonClick={gameRestart} />
       </Modal>
     </GameContainer>
   );

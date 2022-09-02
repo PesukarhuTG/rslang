@@ -18,8 +18,8 @@ const SprintPage = () => {
 
   if (isGame)
     return (
-      <Layout>
-        <SprintGame level={level} />
+      <Layout disableFooter={true}>
+        <SprintGame level={level} gameEnd={() => setISGame(false)} />
       </Layout>
     );
   return (

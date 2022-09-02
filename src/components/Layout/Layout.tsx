@@ -11,7 +11,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children, disableHeader = false, disableFooter = false }) => {
   return (
-    <Container>
+    <Container $position={disableFooter}>
       {!disableHeader && <Header />}
       {children}
       {!disableFooter && <Footer />}
@@ -19,7 +19,9 @@ const Layout: React.FC<LayoutProps> = ({ children, disableHeader = false, disabl
   );
 };
 
-const Container = styled.div`
+const Container = styled.div<{
+  $position: boolean;
+}>`
   max-width: 1440px;
   width: 100%;
   min-height: 100vh;
@@ -29,7 +31,7 @@ const Container = styled.div`
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  ${({ $position }) => ($position ? 'justify-content: start' : 'justify-content: space-between')}
 `;
 
 export default Layout;
