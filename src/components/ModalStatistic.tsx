@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import MemoryCard from '../types/Card';
+import { MemoryCard } from '../types/responses/index';
 import soundico from '../assets/svg/sound-icon.svg';
 import { DB_LINK } from '../types/DataBaseTypes';
 import Button from './Button';

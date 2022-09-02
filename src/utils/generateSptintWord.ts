@@ -1,4 +1,4 @@
-import MemoryCard from '../types/Card';
+import { MemoryCard } from '../types/responses/index';
 
 const generateSptintWord = (wordsArray: MemoryCard[]) => {
   const CORRECT_RATE = 0.5;

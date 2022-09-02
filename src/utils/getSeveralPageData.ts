@@ -1,4 +1,4 @@
-import MemoryCard from '../types/Card';
+import MemoryCard from '../types/responses/Card';
 import getData from './getData';
 
 const getSeveralPageData = async (group: number, page?: number | null) => {

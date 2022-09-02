@@ -5,7 +5,7 @@ import Score from './ScoreCounter';
 import Button from './Button';
 import Stars from './Stars';
 import SprintWords from './SprintWords';
-import MemoryCard from '../types/Card';
+import { MemoryCard } from '../types/responses/index';
 import { ejectByID, generateSptintWord, getSeveralPageData } from '../utils';
 import Modal from './Modal';
 import Spin from './Spinner';

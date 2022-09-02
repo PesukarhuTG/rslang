@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import parse from 'html-react-parser';
 import styled from 'styled-components';
 import soundico from '../assets/svg/sound-icon.svg';
-import MemoryCard from '../types/Card';
+import MemoryCard from '../types/responses/Card';
 import { DB_LINK } from '../types/DataBaseTypes';
 
 interface WordsProps {
