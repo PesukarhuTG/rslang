@@ -1,8 +1,7 @@
 import axiosApi from '../http/index';
 import { AxiosResponse } from 'axios';
 import createUrl from './createUrl';
-import RegistrationResponse from '../types/responses/RegistrationResponse';
-import LoginResponse from '../types/responses/LoginResponse';
+import { RegistrationResponse, LoginResponse } from '../types/responses';
 
 export const registrationUser = async (
   name: string,
