@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Hero, Album, Select, Button, Pagination, Subtitle } from '../components';
 import Layout from '../components/Layout/Layout';
 import textBookImg from '../assets/svg/hero-textbook-logo.svg';
@@ -12,9 +12,16 @@ const options = [
   { label: 'C1 - Advanced', value: '4' },
   { label: 'C2 - Proficiency', value: '5' },
 ];
+
 const TextbookPage = () => {
-  const [difficult, setDifficult] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [difficult, setDifficult] = useState(localStorage.getItem('engLevel') || 0);
+  const [currentPage, setCurrentPage] = useState(localStorage.getItem('currentPage') || 1);
+
+  useEffect(() => {
+    localStorage.setItem('currentPage', `${currentPage}`);
+    localStorage.setItem('engLevel', `${difficult}`);
+  }, [currentPage, difficult]);
+
   return (
     <Layout>
       <Hero
@@ -33,7 +40,13 @@ const TextbookPage = () => {
       <ControlsWrapper>
         <Selector>
           <Subtitle content="Выберите уровень" />
-          <Select options={options} onChange={value => setDifficult(+value)} />
+          <Select
+            options={options}
+            onChange={value => {
+              setDifficult(+value);
+              setCurrentPage(1);
+            }}
+          />
         </Selector>
         <ButtonGroup>
           <Button label="Спринт" />
@@ -43,7 +56,7 @@ const TextbookPage = () => {
           <Pagination page={+currentPage} onChange={page => setCurrentPage(page)} total={30} />
         </PaginationWrapper>
       </ControlsWrapper>
-      <Album group={difficult} page={currentPage - 1} level={difficult} />
+      <Album group={+difficult} page={+currentPage - 1} level={+difficult} />
     </Layout>
   );
 };

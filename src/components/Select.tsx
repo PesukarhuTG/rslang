@@ -14,9 +14,15 @@ interface SelectProps {
 }
 
 const Select: React.FC<SelectProps> = ({ options, onChange = () => {}, disabled = false }) => {
+  let currentEngLevel = 0;
+
+  if (localStorage.getItem('pageTitle') === 'textbook' && localStorage.getItem('pageTitle') !== '') {
+    currentEngLevel = +`${localStorage.getItem('engLevel')}`;
+  }
+
   return (
     <StyledSelect
-      defaultValue={options[0]}
+      defaultValue={options[currentEngLevel]}
       options={options}
       size="large"
       disabled={disabled}
