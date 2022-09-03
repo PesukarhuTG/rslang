@@ -16,8 +16,12 @@ interface SelectProps {
 const Select: React.FC<SelectProps> = ({ options, onChange = () => {}, disabled = false }) => {
   let currentEngLevel = 0;
 
-  if (localStorage.getItem('pageTitle') === 'textbook' && localStorage.getItem('pageTitle') !== '') {
-    currentEngLevel = +`${localStorage.getItem('engLevel')}`;
+  if (localStorage.getItem('pageTitle') === 'textbook') {
+    const data = localStorage.getItem('engLevel');
+
+    if (data !== null) {
+      currentEngLevel = +data;
+    }
   }
 
   return (
