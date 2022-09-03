@@ -16,3 +16,5 @@ export { default as Stars } from './Stars';
 export { default as Album } from './CardAlbum';
 export { default as Spinner } from './Spinner';
 export { default as Modal } from './Modal';
+export { default as AudioDisplay } from './AudioDisplay'
+export { default as AudioGame } from './AudioGame' 
