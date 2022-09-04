@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Hero, Album, Select, Button, Pagination, Subtitle } from '../components';
+import { Hero, Album, Select, Button, Pagination, Subtitle, SprintGame } from '../components';
 import Layout from '../components/Layout/Layout';
 import textBookImg from '../assets/svg/hero-textbook-logo.svg';
 import styled from 'styled-components';
 
 const options = [
-  { label: 'A1 - Beginner', value: '0' },
-  { label: 'A2 - Elementary', value: '1' },
-  { label: 'B1 - Intermediate', value: '2' },
-  { label: 'B2 - Upper Intermediate', value: '3' },
-  { label: 'C1 - Advanced', value: '4' },
-  { label: 'C2 - Proficiency', value: '5' },
+  { value: '0', label: 'A1 - Beginner' },
+  { value: '1', label: 'A2 - Elementary' },
+  { value: '2', label: 'B1 - Intermediate' },
+  { value: '3', label: 'B2 - Upper Intermediate' },
+  { value: '4', label: 'C1 - Advanced' },
+  { value: '5', label: 'C2 - Proficiency' },
 ];
 
 const TextbookPage = () => {
@@ -24,6 +24,17 @@ const TextbookPage = () => {
     localStorage.setItem('currentPage', `${currentPage}`);
     localStorage.setItem('engLevel', `${difficult}`);
   }, [currentPage, difficult]);
+
+  const [isGame, setISGame] = useState<boolean>(false);
+  const [level, setLevel] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  if (isGame)
+    return (
+      <Layout disableFooter={true}>
+        <SprintGame level={level} page={currentPage - 1} gameEnd={() => setISGame(false)} />
+      </Layout>
+    );
 
   return (
     <Layout>
@@ -47,20 +58,20 @@ const TextbookPage = () => {
             engLevel={engLevel}
             options={options}
             onChange={value => {
-              setDifficult(+value);
+              setLevel(+value);
               setCurrentPage(1);
             }}
           />
         </Selector>
         <ButtonGroup>
-          <Button label="Спринт" />
+          <Button label="Спринт" onClick={() => setISGame(true)} />
           <Button label="Аудиовызов" />
         </ButtonGroup>
         <PaginationWrapper>
           <Pagination page={+currentPage} onChange={page => setCurrentPage(page)} total={30} />
         </PaginationWrapper>
       </ControlsWrapper>
-      <Album group={difficult} page={currentPage - 1} level={difficult} />
+      <Album group={level} page={currentPage - 1} level={level} />
     </Layout>
   );
 };

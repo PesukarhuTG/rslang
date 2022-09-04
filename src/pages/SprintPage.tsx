@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Layout, Hero, Subtitle, Select, Button } from '../components';
+import { Layout, Hero, Subtitle, Select, Button, SprintGame } from '../components';
 import sprintImg from '../assets/svg/hero-sprint-logo.svg';
 
 const options = [
-  { value: 'A1', label: 'A1 - Beginner' },
-  { value: 'A2', label: 'A2 - Elementary' },
-  { value: 'B1', label: 'B1 - Intermediate' },
-  { value: 'B2', label: 'B2 - Upper Intermediate' },
-  { value: 'C1', label: 'C1 - Advanced' },
-  { value: 'C2', label: 'C2 - Proficiency' },
+  { value: '0', label: 'A1 - Beginner' },
+  { value: '1', label: 'A2 - Elementary' },
+  { value: '2', label: 'B1 - Intermediate' },
+  { value: '3', label: 'B2 - Upper Intermediate' },
+  { value: '4', label: 'C1 - Advanced' },
+  { value: '5', label: 'C2 - Proficiency' },
 ];
 
 const SprintPage = () => {
+  const [isGame, setISGame] = useState<boolean>(false);
+  const [level, setLevel] = useState<number>(0);
+
+  if (isGame)
+    return (
+      <Layout disableFooter={true}>
+        <SprintGame level={level} gameEnd={() => setISGame(false)} />
+      </Layout>
+    );
   return (
     <Layout disableFooter={true}>
       <Hero
@@ -31,8 +40,8 @@ const SprintPage = () => {
       />
       <GameSettings>
         <Subtitle content="Выберите уровень" />
-        <Select options={options} onChange={value => console.log(value)} />
-        <Button label={'Начать'} />
+        <Select options={options} onChange={value => setLevel(+value)} />
+        <Button label="Начать" onClick={() => setISGame(true)} />
       </GameSettings>
     </Layout>
   );
