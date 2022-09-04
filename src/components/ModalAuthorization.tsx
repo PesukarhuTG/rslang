@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Modal, { ModalProps } from './Modal';
 import Button from './Button';
 import accessIco from '../assets/svg/access.svg';
 import styled from 'styled-components';
+import { Context } from '..';
 
 const ModalAuthorization: React.FC<ModalProps> = ({ visible = false, onClose = () => {} }) => {
   const [isRegistration, setIsRegistration] = useState<boolean>(false);
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const { store } = useContext(Context);
 
   return (
     <Modal visible={visible} onClose={onClose}>
@@ -30,7 +32,7 @@ const ModalAuthorization: React.FC<ModalProps> = ({ visible = false, onClose = (
             onChange={event => setPassword(event.target.value)}
             value={password}
           />
-          <Button label="Регистрация" />
+          <Button label="Регистрация" onClick={() => store.registration(name, email, password)} />
           <ModalButton $isRegistration onClick={() => setIsRegistration(false)}>
             Уже есть учетная запись?
           </ModalButton>
@@ -51,7 +53,7 @@ const ModalAuthorization: React.FC<ModalProps> = ({ visible = false, onClose = (
             onChange={event => setPassword(event.target.value)}
             value={password}
           />
-          <Button label="Вход" />
+          <Button label="Вход" onClick={() => store.login(email, password)} />
           <ModalButton onClick={() => setIsRegistration(true)}>Нет учетной записи?</ModalButton>
         </>
       )}
