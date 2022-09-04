@@ -6,11 +6,10 @@ const axiosApi = axios.create();
 axiosApi.interceptors.request.use(
   async config => {
     if (token) {
-      const keys = JSON.parse(token);
       config.headers = {
-        Authorization: `Bearer ${keys}`,
+        Authorization: `Bearer ${token}`,
         Accept: 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
       };
     }
     return config;

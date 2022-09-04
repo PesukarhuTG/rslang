@@ -12,5 +12,5 @@ export const registrationUser = async (
 };
 
 export const loginUser = async (email: string, password: string): Promise<AxiosResponse<LoginResponse>> => {
-  return axiosApi.post<LoginResponse>(createUrl('/signin'), { email, password });
+  return axiosApi.post<LoginResponse>(createUrl('signin'), { email, password });
 };
