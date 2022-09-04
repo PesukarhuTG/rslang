@@ -81,7 +81,6 @@ const AudioGame: React.FC<AudioGameProps> = ({ level = 0, page = null, gameEnd =
     if (loading) return;
     if (!currentWord.audio) return;
     const audio = createAudio(currentWord.audio);
-    // console.log(currentWord.word);
     audio.play();
     setLoading(true);
   }, [loading, currentWord.audio]);
