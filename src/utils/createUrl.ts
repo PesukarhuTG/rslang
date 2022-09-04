@@ -1,4 +1,4 @@
-import { DBLink } from '../types/DataBaseTypes';
+import { DB_LINK } from '../types/DataBaseTypes';
 
 export interface Options {
   [key: string]: string | number;
@@ -10,7 +10,7 @@ const createUrl = (endpoint: string, options?: Partial<Options>): string => {
     const querryKeys: string[] = Object.keys(options);
     querryUrl = '?' + querryKeys.map(key => `${key}=${options[key]}`).join('&');
   }
-  const fullUrl: string = `${DBLink}${endpoint}${querryUrl}`;
+  const fullUrl: string = `${DB_LINK}${endpoint}${querryUrl}`;
   return fullUrl;
 };
 
