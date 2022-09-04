@@ -9,11 +9,8 @@ import { observer } from 'mobx-react-lite';
 const Header = () => {
   const [isVisibleModal, setIsVisibleModal] = useState<boolean>(false);
   const { store } = useContext(Context);
-  const [auth, setAuth] = useState<string>('Войти');
 
-  useEffect(() => {
-    store.isAuth ? setAuth('Выйти') : setAuth('Войти');
-  }, [store.isAuth]);
+  const authButtonValue = () => (store.isAuth ? 'Выйти' : 'Войти');
 
   return (
     <AppHeader>
@@ -30,7 +27,7 @@ const Header = () => {
             !store.isAuth ? setIsVisibleModal(true) : store.logout();
           }}
         >
-          {auth}
+          {authButtonValue()}
         </HeaderBtn>
         <ModalAuthorization visible={isVisibleModal} onClose={() => setIsVisibleModal(false)} />
       </Container>
