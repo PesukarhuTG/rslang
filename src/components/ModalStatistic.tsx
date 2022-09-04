@@ -11,6 +11,7 @@ interface StatisticProps {
   correct?: MemoryCard[];
   wrong?: MemoryCard[];
   score?: number;
+  isScore?: boolean;
   onButtonClick?: () => void;
 }
 const ModalStatistic: React.FC<StatisticProps> = ({
@@ -18,6 +19,7 @@ const ModalStatistic: React.FC<StatisticProps> = ({
   score = 0,
   wrong = [],
   correct = [],
+  isScore = true,
   onButtonClick = () => {},
 }) => {
   let navigate = useNavigate();
@@ -29,7 +31,7 @@ const ModalStatistic: React.FC<StatisticProps> = ({
     <>
       <Container>
         <GameStatisticHeader>Результат игры «{gameName}»</GameStatisticHeader>
-        <GameScore>Количество очков: {score}</GameScore>
+        {isScore && <GameScore>Количество очков: {score}</GameScore>}
         <GameStatistic>
           <GameStatisticInner title="Ошибок: " data={wrong} isCorrect={false} />
           <GameStatisticInner title="Знаю: " data={correct} isCorrect={true} />
@@ -68,22 +70,20 @@ interface StatisticResultsProps {
 const StatisticResults: React.FC<StatisticResultsProps> = ({ data }) => {
   const [play, setPlay] = useState<boolean>(true);
   const playAudio = () => {
-    setPlay(!play);
+    setPlay(false);
     const audio = new Audio(`${DB_LINK}${data.audio}`);
     audio.play();
-    audio.addEventListener('ended', () => setPlay(play));
+    audio.addEventListener('ended', () => setPlay(true));
   };
 
-  if (data) {
-    return (
-      <StatisticRow>
-        <WordAudio src={soundico} alt={data.word} onClick={play ? playAudio : () => {}} />
-        <Word>{data.word}</Word>-<span>{data.wordTranslate}</span>
-      </StatisticRow>
-    );
-  }
+  if (!data) return null;
 
-  return <></>;
+  return (
+    <StatisticRow>
+      <WordAudio src={soundico} alt={data.word} onClick={play ? playAudio : () => {}} />
+      <Word>{data.word}</Word>-<span>{data.wordTranslate}</span>
+    </StatisticRow>
+  );
 };
 
 const Container = styled.div`

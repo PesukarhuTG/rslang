@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Hero, Album, Select, Button, Pagination, Subtitle, SprintGame } from '../components';
+import { Hero, Album, Select, Button, Pagination, Subtitle, SprintGame, AudioGame } from '../components';
 import Layout from '../components/Layout/Layout';
 import textBookImg from '../assets/svg/hero-textbook-logo.svg';
 import styled from 'styled-components';
@@ -12,15 +12,23 @@ const options = [
   { value: '4', label: 'C1 - Advanced' },
   { value: '5', label: 'C2 - Proficiency' },
 ];
+
+type PageView = 'TextBook' | 'Sprint' | 'Audio';
 const TextbookPage = () => {
-  const [isGame, setISGame] = useState<boolean>(false);
+  const [view, setView] = useState<PageView>('TextBook');
   const [level, setLevel] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
 
-  if (isGame)
+  if (view === 'Sprint')
     return (
       <Layout disableFooter={true}>
-        <SprintGame level={level} page={currentPage - 1} gameEnd={() => setISGame(false)} />
+        <SprintGame level={level} page={currentPage - 1} gameEnd={() => setView('TextBook')} />
+      </Layout>
+    );
+  if (view === 'Audio')
+    return (
+      <Layout disableFooter={true}>
+        <AudioGame level={level} page={currentPage - 1} gameEnd={() => setView('TextBook')} />
       </Layout>
     );
   return (
@@ -44,8 +52,8 @@ const TextbookPage = () => {
           <Select options={options} onChange={value => setLevel(+value)} />
         </Selector>
         <ButtonGroup>
-          <Button label="Спринт" onClick={() => setISGame(true)} />
-          <Button label="Аудиовызов" />
+          <Button label="Спринт" onClick={() => setView('Sprint')} />
+          <Button label="Аудиовызов" onClick={() => setView('Audio')} />
         </ButtonGroup>
         <PaginationWrapper>
           <Pagination page={+currentPage} onChange={page => setCurrentPage(page)} total={30} />
