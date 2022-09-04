@@ -15,13 +15,13 @@ const options = [
 
 const TextbookPage = () => {
   const engLevel = localStorage.getItem('engLevel') ? Number(localStorage.getItem('engLevel')) : 0;
-  const page = localStorage.getItem('currentPage') ? Number(localStorage.getItem('currentPage')) : 1;
+  const page = localStorage.getItem('curPage') ? Number(localStorage.getItem('curPage')) : 1;
 
   const [difficult, setDifficult] = useState(engLevel);
   const [currentPage, setCurrentPage] = useState(page);
 
   useEffect(() => {
-    localStorage.setItem('currentPage', `${currentPage}`);
+    localStorage.setItem('curPage', `${currentPage}`);
     localStorage.setItem('engLevel', `${difficult}`);
   }, [currentPage, difficult]);
 
