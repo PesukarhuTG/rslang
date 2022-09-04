@@ -39,6 +39,6 @@ export default class Store {
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('userId');
     localStorage.removeItem('userName');
-    this.setAuth(true);
+    this.setAuth(false);
   }
 }
