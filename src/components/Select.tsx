@@ -8,16 +8,16 @@ export type Option = {
 };
 
 interface SelectProps {
-  engLevel?: number;
+  defaultIndex?: number;
   options: Option[];
   onChange?: (value: string) => void;
   disabled?: boolean;
 }
 
-const Select: React.FC<SelectProps> = ({ options, engLevel = 0, onChange = () => {}, disabled = false }) => {
+const Select: React.FC<SelectProps> = ({ options, defaultIndex = 0, onChange = () => {}, disabled = false }) => {
   return (
     <StyledSelect
-      defaultValue={options[engLevel]}
+      defaultValue={options[defaultIndex]}
       options={options}
       size="large"
       disabled={disabled}

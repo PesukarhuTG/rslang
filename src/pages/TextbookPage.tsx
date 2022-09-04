@@ -52,7 +52,7 @@ const TextbookPage = () => {
         <Selector>
           <Subtitle content="Выберите уровень" />
           <Select
-            engLevel={engLevel}
+            defaultIndex={engLevel}
             options={options}
             onChange={value => {
               setLevel(+value);
