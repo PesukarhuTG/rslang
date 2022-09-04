@@ -31,7 +31,6 @@ interface HeaderNavItemProps {
 
 const HeaderNavItem: React.FC<HeaderNavItemProps> = ({ to, label }) => {
   const { pathname } = useLocation();
-  localStorage.setItem('pageTitle', pathname.slice(1));
 
   return (
     <HeaderLink to={to} $active={to === pathname}>

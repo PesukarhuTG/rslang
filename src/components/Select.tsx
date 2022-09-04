@@ -8,25 +8,16 @@ export type Option = {
 };
 
 interface SelectProps {
+  engLevel?: number;
   options: Option[];
   onChange?: (value: string) => void;
   disabled?: boolean;
 }
 
-const Select: React.FC<SelectProps> = ({ options, onChange = () => {}, disabled = false }) => {
-  let currentEngLevel = 0;
-
-  if (localStorage.getItem('pageTitle') === 'textbook') {
-    const data = localStorage.getItem('engLevel');
-
-    if (data !== null) {
-      currentEngLevel = +data;
-    }
-  }
-
+const Select: React.FC<SelectProps> = ({ options, engLevel = 0, onChange = () => {}, disabled = false }) => {
   return (
     <StyledSelect
-      defaultValue={options[currentEngLevel]}
+      defaultValue={options[engLevel]}
       options={options}
       size="large"
       disabled={disabled}

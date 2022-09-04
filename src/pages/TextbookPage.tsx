@@ -14,8 +14,11 @@ const options = [
 ];
 
 const TextbookPage = () => {
-  const [difficult, setDifficult] = useState(localStorage.getItem('engLevel') || 0);
-  const [currentPage, setCurrentPage] = useState(localStorage.getItem('currentPage') || 1);
+  const engLevel = localStorage.getItem('engLevel') ? Number(localStorage.getItem('engLevel')) : 0;
+  const page = localStorage.getItem('currentPage') ? Number(localStorage.getItem('currentPage')) : 1;
+
+  const [difficult, setDifficult] = useState(engLevel);
+  const [currentPage, setCurrentPage] = useState(page);
 
   useEffect(() => {
     localStorage.setItem('currentPage', `${currentPage}`);
@@ -41,6 +44,7 @@ const TextbookPage = () => {
         <Selector>
           <Subtitle content="Выберите уровень" />
           <Select
+            engLevel={engLevel}
             options={options}
             onChange={value => {
               setDifficult(+value);
@@ -56,7 +60,7 @@ const TextbookPage = () => {
           <Pagination page={+currentPage} onChange={page => setCurrentPage(page)} total={30} />
         </PaginationWrapper>
       </ControlsWrapper>
-      <Album group={+difficult} page={+currentPage - 1} level={+difficult} />
+      <Album group={difficult} page={currentPage - 1} level={difficult} />
     </Layout>
   );
 };
