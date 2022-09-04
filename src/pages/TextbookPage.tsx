@@ -15,19 +15,16 @@ const options = [
 
 const TextbookPage = () => {
   const engLevel = localStorage.getItem('engLevel') ? Number(localStorage.getItem('engLevel')) : 0;
-  const page = localStorage.getItem('curPage') ? Number(localStorage.getItem('curPage')) : 1;
+  const page = localStorage.getItem('currentPage') ? Number(localStorage.getItem('currentPage')) : 1;
 
-  const [difficult, setDifficult] = useState(engLevel);
   const [currentPage, setCurrentPage] = useState(page);
+  const [level, setLevel] = useState(engLevel);
+  const [isGame, setISGame] = useState<boolean>(false);
 
   useEffect(() => {
-    localStorage.setItem('curPage', `${currentPage}`);
-    localStorage.setItem('engLevel', `${difficult}`);
-  }, [currentPage, difficult]);
-
-  const [isGame, setISGame] = useState<boolean>(false);
-  const [level, setLevel] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
+    localStorage.setItem('currentPage', `${currentPage}`);
+    localStorage.setItem('engLevel', `${level}`);
+  }, [currentPage, level]);
 
   if (isGame)
     return (
