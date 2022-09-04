@@ -24,15 +24,18 @@ const Footer = () => {
 };
 
 const AppFooter = styled.footer`
-  min-height: 170px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 20px 0;
 
   @media (max-width: 1200px) {
     flex-direction: column;
-    gap: 50px;
-    padding: 20px 0;
+    gap: 30px;
+  }
+
+  @media (max-width: 620px) {
+    gap: 10px;
   }
 `;
 
@@ -41,6 +44,19 @@ const FooterAuthors = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 60px;
+
+  @media (max-width: 1200px) {
+    gap: 20px;
+  }
+
+  @media (max-width: 620px) {
+    gap: 30px;
+  }
+
+  @media (max-width: 460px) {
+    flex-direction: column;
+    gap: 8px;
+  }
 `;
 
 const FooterAuthorsItem = styled.a`
@@ -49,12 +65,27 @@ const FooterAuthorsItem = styled.a`
   justify-content: space-between;
   align-items: center;
   padding-left: 65px;
+  font-size: 22px;
   background: url(${footerAuthorIco}) no-repeat;
+  background-position: center left;
   transition: 0.3s;
 
   &:hover {
     color: var(--primary-light);
     filter: invert(19%) sepia(8%) saturate(3615%) hue-rotate(37deg) brightness(98%) contrast(86%);
+  }
+
+  @media (max-width: 620px) {
+    background-size: 30px;
+    padding-left: 36px;
+  }
+
+  @media (max-width: 530px) {
+    font-size: 18px;
+  }
+
+  @media (max-width: 460px) {
+    height: 32px;
   }
 `;
 
@@ -63,6 +94,8 @@ const FooterRssLink = styled.a`
   height: 65px;
   width: 175px;
   background: url(${footerRssIco}) no-repeat;
+  background-position: center center;
+  background-size: contain;
   transition: 0.3s;
 
   &:hover {
@@ -71,6 +104,10 @@ const FooterRssLink = styled.a`
 
   @media (max-width: 1200px) {
     order: -1;
+  }
+
+  @media (max-width: 620px) {
+    width: 120px;
   }
 `;
 

@@ -29,7 +29,7 @@ const Advantages = () => {
       <AdvItem>
         <AdvSvg style={{ background: `url(${progressSvg}) no-repeat` }} />
         <AdvDescription>
-          Динамика <strong>своего прогресса</strong>
+          Отслеживание динамики <strong>своего прогресса</strong>
         </AdvDescription>
       </AdvItem>
     </AdvantagesSection>
@@ -44,6 +44,7 @@ const AdvantagesSection = styled.div`
 
   @media (max-width: 1480px) {
     grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
   }
 
   @media (max-width: 760px) {
@@ -66,10 +67,15 @@ const AdvSvg = styled.div`
 
 const AdvDescription = styled.p`
   margin-top: 40px;
+  font-size: 22px;
   text-align: center;
 
   @media (max-width: 1480px) {
     max-width: 350px;
+  }
+
+  @media (max-width: 530px) {
+    font-size: 18px;
   }
 `;
 

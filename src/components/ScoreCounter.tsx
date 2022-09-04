@@ -18,6 +18,10 @@ const ScoreInfo = styled.p`
   width: 100%;
   text-align: right;
   font-size: 36px;
+
+  @media (max-width: 500px) {
+    text-align: center;
+  }
 `;
 
 const ScoreCounter = styled.span`

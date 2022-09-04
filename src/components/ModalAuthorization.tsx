@@ -97,6 +97,10 @@ const ModalTitle = styled.h4<{
   margin-bottom: ${({ $isRegistration }) => ($isRegistration ? '30px' : '65px')};
   font-size: 36px;
   font-weight: 700;
+
+  @media (max-width: 600px) {
+    font-size: 26px;
+  }
 `;
 
 const ModalInput = styled.input<{
@@ -104,8 +108,8 @@ const ModalInput = styled.input<{
 }>`
   max-width: 600px;
   width: 100%;
-  padding: 24px;
-  margin-bottom: 40px;
+  padding: 20px;
+  margin-bottom: 20px;
   background-color: var(--main-background);
   border: 1px solid var(--primary);
   border-radius: 10px;
@@ -118,12 +122,17 @@ const ModalInput = styled.input<{
   }
 
   &[type='password'] {
-    margin-bottom: ${({ $isRegistration }) => ($isRegistration ? '60px' : '80px')};
+    margin-bottom: ${({ $isRegistration }) => ($isRegistration ? '40px' : '60px')};
   }
 
   &:focus,
   &:active {
     border: 1px solid var(--btn-primary-hover);
+  }
+
+  @media (max-width: 600px) {
+    font-size: 20px;
+    padding: 18px 20px;
   }
 `;
 
@@ -132,7 +141,7 @@ const ModalButton = styled.p<{
 }>`
   padding-bottom: 5px;
   margin: ${({ $isRegistration }) => ($isRegistration ? '20px 0 34px' : '40px 0 65px')};
-  font-size: 24px;
+  font-size: 18px;
   border-bottom: 1px solid var(--primary-light);
   cursor: pointer;
   transition: 0.3s;
@@ -140,6 +149,10 @@ const ModalButton = styled.p<{
   &:hover {
     color: var(--primary);
     border-bottom: 1px solid var(--primary);
+  }
+
+  @media (max-width: 600px) {
+    font-size: 16px;
   }
 `;
 

@@ -40,7 +40,7 @@ const TextbookPage = () => {
         content={
           <>
             <Hero.Title>
-              <strong>"Электронный учебник"</strong>
+              <strong>«Электронный учебник»</strong>
             </Hero.Title>
             <Hero.Description>
               Более 3600 слов, разбитых на разделы по уровню подготовки. Выбирай уровень, который подойдет именно тебе!
@@ -51,19 +51,21 @@ const TextbookPage = () => {
       <ControlsWrapper>
         <Selector>
           <Subtitle content="Выберите уровень" />
-          <Select
-            defaultIndex={engLevel}
-            options={options}
-            onChange={value => {
-              setLevel(+value);
-              setCurrentPage(1);
-            }}
-          />
+          <Settings>
+            <Select
+              defaultIndex={engLevel}
+              options={options}
+              onChange={value => {
+                setLevel(+value);
+                setCurrentPage(1);
+              }}
+            />
+            <ButtonGroup>
+              <Button label="Спринт" onClick={() => setISGame(true)} />
+              <Button label="Аудиовызов" />
+            </ButtonGroup>
+          </Settings>
         </Selector>
-        <ButtonGroup>
-          <Button label="Спринт" onClick={() => setISGame(true)} />
-          <Button label="Аудиовызов" />
-        </ButtonGroup>
         <PaginationWrapper>
           <Pagination page={+currentPage} onChange={page => setCurrentPage(page)} total={30} />
         </PaginationWrapper>
@@ -74,25 +76,35 @@ const TextbookPage = () => {
 };
 
 const ControlsWrapper = styled.div`
-  display: grid;
-  grid-auto-flow: row;
-  grid-template-areas:
-    'sel btn'
-    'pag pag';
-  grid-row-gap: 90px;
-  margin-bottom: 70px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 40px;
 `;
 
 const Selector = styled.div`
-  grid-area: sel;
-  width: fit-content;
+  width: 100%;
   & > :first-child {
     margin-bottom: 40px;
   }
 `;
 
+const Settings = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    gap: 30px;
+  }
+`;
+
 const ButtonGroup = styled.div`
-  grid-area: btn;
   display: flex;
   gap: 20px;
   justify-content: end;
@@ -100,8 +112,9 @@ const ButtonGroup = styled.div`
 `;
 
 const PaginationWrapper = styled.div`
-  grid-area: pag;
   justify-self: center;
+  align-self: center;
+  padding: 20px 0;
 `;
 
 export default TextbookPage;
