@@ -16,8 +16,6 @@ export default class Store {
     try {
       const response = await registrationUser(name, email, password);
       const res = await this.login(email, password);
-      console.log(response);
-      console.log(res);
     } catch (error) {
       console.log(error);
     }
@@ -26,7 +24,6 @@ export default class Store {
   async login(email: string, password: string) {
     try {
       const response = await loginUser(email, password);
-      console.log(response);
       localStorage.setItem('tokenUser', response.data.token);
       localStorage.setItem('refreshToken', response.data.refreshToken);
       localStorage.setItem('userId', response.data.userId);
