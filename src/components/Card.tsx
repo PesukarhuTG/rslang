@@ -3,7 +3,7 @@ import parse from 'html-react-parser';
 import styled from 'styled-components';
 import soundico from '../assets/svg/sound-icon.svg';
 import MemoryCard from '../types/responses/Card';
-import { DBLink } from '../types/DataBaseTypes';
+import { DB_LINK } from '../types/DataBaseTypes';
 
 interface WordsProps {
   word: MemoryCard;
@@ -14,9 +14,9 @@ const FlashCard: React.FC<WordsProps> = ({ word, level }) => {
   const [play, setPlay] = useState<boolean>(true);
   const playAudio = () => {
     setPlay(!play);
-    const audio = new Audio(`${DBLink}${word.audio}`);
-    const audioMeaning = new Audio(`${DBLink}${word.audioMeaning}`);
-    const audioExample = new Audio(`${DBLink}${word.audioExample}`);
+    const audio = new Audio(`${DB_LINK}${word.audio}`);
+    const audioMeaning = new Audio(`${DB_LINK}${word.audioMeaning}`);
+    const audioExample = new Audio(`${DB_LINK}${word.audioExample}`);
     audio.play();
     audio.addEventListener('ended', () => audioMeaning.play());
     audioMeaning.addEventListener('ended', () => audioExample.play());
@@ -25,7 +25,7 @@ const FlashCard: React.FC<WordsProps> = ({ word, level }) => {
 
   return (
     <CardBody>
-      <CardImage style={{ backgroundImage: `url(${DBLink}${word.image})` }} />
+      <CardImage style={{ backgroundImage: `url(${DB_LINK}${word.image})` }} />
       <WordDeclaration $level={level}>
         <Word>
           <WordTranscription $level={level}>
