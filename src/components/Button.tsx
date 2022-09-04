@@ -35,6 +35,11 @@ const StyledButton = styled.button<{
     color: var(--btn-font-hover);
   }
 
+  @media (max-width: 500px) {
+    font-size: 20px;
+    padding: 0 20px;
+  }
+
   ${({ $type }) => {
     if ($type === 'primary')
       return css`
