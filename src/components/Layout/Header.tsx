@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import headerBtnIco from '../../assets/svg/header-btn-ico.svg';
 import { Link, useLocation } from 'react-router-dom';
 import ModalAuthorization from '../ModalAuthorization';
+import { Context } from '../..';
+import { observer } from 'mobx-react-lite';
 
 const Header = () => {
   const [isVisibleModal, setIsVisibleModal] = useState<boolean>(false);
+  const { store } = useContext(Context);
+  const [auth, setAuth] = useState<string>('Войти');
+
+  useEffect(() => {
+    store.isAuth ? setAuth('Выйти') : setAuth('Войти');
+  }, [store.isAuth]);
 
   return (
     <AppHeader>
@@ -17,7 +25,13 @@ const Header = () => {
           <HeaderNavItem to="/audio" label="Аудиовызов" />
           <HeaderNavItem to="/statistic" label="Статистика" />
         </HeaderNav>
-        <HeaderBtn onClick={() => setIsVisibleModal(true)}>Гость</HeaderBtn>
+        <HeaderBtn
+          onClick={() => {
+            !store.isAuth ? setIsVisibleModal(true) : store.logout();
+          }}
+        >
+          {auth}
+        </HeaderBtn>
         <ModalAuthorization visible={isVisibleModal} onClose={() => setIsVisibleModal(false)} />
       </Container>
     </AppHeader>
@@ -105,4 +119,4 @@ const HeaderBtn = styled.button`
   }
 `;
 
-export default Header;
+export default observer(Header);

@@ -4,6 +4,7 @@ import Button from './Button';
 import accessIco from '../assets/svg/access.svg';
 import styled from 'styled-components';
 import { Context } from '..';
+import { useNavigate } from 'react-router-dom';
 
 const ModalAuthorization: React.FC<ModalProps> = ({ visible = false, onClose = () => {} }) => {
   const [isRegistration, setIsRegistration] = useState<boolean>(false);
@@ -11,6 +12,11 @@ const ModalAuthorization: React.FC<ModalProps> = ({ visible = false, onClose = (
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const { store } = useContext(Context);
+  let navigate = useNavigate();
+
+  const mainDirect = () => {
+    navigate('/');
+  };
 
   return (
     <Modal visible={visible} onClose={onClose}>
@@ -32,7 +38,16 @@ const ModalAuthorization: React.FC<ModalProps> = ({ visible = false, onClose = (
             onChange={event => setPassword(event.target.value)}
             value={password}
           />
-          <Button label="Регистрация" onClick={() => store.registration(name, email, password)} />
+          <Button
+            label="Регистрация"
+            onClick={async () => {
+              await store.registration(name, email, password);
+              if (store.isAuth) {
+                onClose();
+                mainDirect();
+              }
+            }}
+          />
           <ModalButton $isRegistration onClick={() => setIsRegistration(false)}>
             Уже есть учетная запись?
           </ModalButton>
@@ -53,7 +68,16 @@ const ModalAuthorization: React.FC<ModalProps> = ({ visible = false, onClose = (
             onChange={event => setPassword(event.target.value)}
             value={password}
           />
-          <Button label="Вход" onClick={() => store.login(email, password)} />
+          <Button
+            label="Вход"
+            onClick={async () => {
+              await store.login(email, password);
+              if (store.isAuth) {
+                onClose();
+                mainDirect();
+              }
+            }}
+          />
           <ModalButton onClick={() => setIsRegistration(true)}>Нет учетной записи?</ModalButton>
         </>
       )}
