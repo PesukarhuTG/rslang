@@ -10,8 +10,6 @@ const Header = () => {
   const [isVisibleModal, setIsVisibleModal] = useState<boolean>(false);
   const { store } = useContext(Context);
 
-  const authButtonValue = () => (store.isAuth ? 'Выйти' : 'Войти');
-
   return (
     <AppHeader>
       <HeaderLogo to="/">RSS Lang</HeaderLogo>
@@ -27,7 +25,7 @@ const Header = () => {
             !store.isAuth ? setIsVisibleModal(true) : store.logout();
           }}
         >
-          {authButtonValue()}
+          {store.isAuth ? 'Выйти' : 'Войти'}
         </HeaderBtn>
         <ModalAuthorization visible={isVisibleModal} onClose={() => setIsVisibleModal(false)} />
       </Container>
