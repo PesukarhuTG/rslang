@@ -34,7 +34,7 @@ export default class Store {
     }
   }
 
-  async logout() {
+  logout() {
     localStorage.removeItem('tokenUser');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('userId');

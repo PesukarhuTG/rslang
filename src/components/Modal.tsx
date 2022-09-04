@@ -79,12 +79,12 @@ const ButtonClose = styled.button`
 `;
 
 const ModalMessage = styled.div`
-  height: 80vh;
   width: 100%;
-
+  height: 75vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
 `;
 
 export default Modal;
