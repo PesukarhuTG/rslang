@@ -17,6 +17,7 @@ type Word = {
   wordTranslate: string;
   correct: boolean;
 };
+
 interface SprintGameProps {
   level?: number;
   page?: number;
@@ -153,7 +154,7 @@ const SprintGame: React.FC<SprintGameProps> = ({ level = 0, page = null, gameEnd
 const GameContainer = styled.div`
   max-width: 735px;
   width: 100%;
-  margin: 50px auto;
+  margin: auto;
 
   display: flex;
   flex-direction: column;
@@ -173,6 +174,11 @@ const StatusCounters = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 const GameButtons = styled.div`

@@ -1,7 +1,7 @@
-import createUrl from './createUrl'
+import createUrl from './createUrl';
 
 const createAudio = (url: string) => {
-	return new Audio(createUrl(url))
-}
+  return new Audio(createUrl(url));
+};
 
-export default createAudio
+export default createAudio;

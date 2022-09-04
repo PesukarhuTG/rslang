@@ -32,6 +32,11 @@ const Container = styled.div<{
   display: flex;
   flex-direction: column;
   ${({ $position }) => ($position ? 'justify-content: start' : 'justify-content: space-between')}
+
+  @media (max-width: 600px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 `;
 
 export default Layout;

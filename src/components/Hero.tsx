@@ -11,7 +11,7 @@ const InnerHero: React.FC<InnerHeroProps> = ({ image, content }) => {
     <HeroSection>
       <HeroContent>
         <HeroText>{content}</HeroText>
-        <img src={image} alt="hero-logo" />
+        <img src={image} alt="hero-logo" width={300} />
       </HeroContent>
     </HeroSection>
   );
@@ -34,12 +34,16 @@ const Description: React.FC<DescriptionProps> = ({ children }) => {
 };
 
 const HeroSection = styled.section`
-  min-height: 620px;
   display: flex;
   align-items: center;
+  padding: 60px 0;
 
   @media (max-width: 1100px) {
     margin-bottom: 50px;
+  }
+
+  @media (max-width: 530px) {
+    margin-bottom: 20px;
   }
 `;
 
@@ -61,16 +65,21 @@ const HeroContent = styled.div`
 
 const HeroTitle = styled.h2`
   margin: 0;
-  font-size: 60px;
+  font-size: 50px;
   color: var(--primary);
 
   @media (max-width: 1100px) {
     text-align: center;
   }
+
+  @media (max-width: 500px) {
+    font-size: 40px;
+  }
 `;
 
 const HeroText = styled.div`
   max-width: 850px;
+  padding-right: 30px;
   display: flex;
   flex-direction: column;
   gap: 35px;
@@ -78,9 +87,15 @@ const HeroText = styled.div`
 
 const HeroDescription = styled.p`
   padding-left: 40px;
-  font-size: 30px;
+  font-size: 24px;
   color: var(--primary);
   border-left: 10px solid var(--primary);
+
+  @media (max-width: 500px) {
+    font-size: 20px;
+    padding-left: 20px;
+    border-left: 5px solid var(--primary);
+  }
 `;
 
 type InnerHeroType = typeof InnerHero;

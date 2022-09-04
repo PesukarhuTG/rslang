@@ -63,15 +63,23 @@ const FeatureCard = styled.div`
 const FeatureItemTitle = styled.h4`
   margin-bottom: 20px;
   color: var(--primary);
-  font-size: 36px;
+  font-size: 30px;
   font-weight: 700;
+
+  @media (max-width: 530px) {
+    font-size: 22px;
+  }
 `;
 
 const FeatureItemDescr = styled.p`
   padding-left: 10px;
   padding-right: 10px;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.7;
+
+  @media (max-width: 530px) {
+    font-size: 18px;
+  }
 `;
 
 export default Feature;

@@ -28,6 +28,14 @@ const EnglishWord = styled.p`
   text-align: center;
   line-height: 1.1;
   color: var(--primary);
+
+  @media (max-width: 600px) {
+    font-size: 50px;
+  }
+
+  @media (max-width: 420px) {
+    font-size: 40px;
+  }
 `;
 
 const Translate = styled.p`
@@ -35,6 +43,14 @@ const Translate = styled.p`
   text-align: center;
   line-height: 1.1;
   color: var(--primary-light);
+
+  @media (max-width: 600px) {
+    font-size: 38px;
+  }
+
+  @media (max-width: 420px) {
+    font-size: 28px;
+  }
 `;
 
 export default SprintWords;

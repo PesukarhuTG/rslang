@@ -41,11 +41,19 @@ const ModalTitle = styled.p`
   text-align: center;
   font-size: 36px;
   font-weight: 700;
+
+  @media (max-width: 600px) {
+    font-size: 30px;
+  }
 `;
 
 const ModalContent = styled.div`
   text-align: center;
   padding: 20px 0;
+
+  @media (max-width: 600px) {
+    font-size: 20px;
+  }
 `;
 
 const ButtonGroup = styled.div`
@@ -54,6 +62,10 @@ const ButtonGroup = styled.div`
   justify-content: center;
   gap: 20px;
   padding: 40px 0;
+
+  @media (max-width: 440px) {
+    flex-direction: column;
+  }
 `;
 
 export default StatisticPage;

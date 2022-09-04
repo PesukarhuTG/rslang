@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import headerBtnIco from '../../assets/svg/header-btn-ico.svg';
 import { Link, useLocation } from 'react-router-dom';
 import ModalAuthorization from '../ModalAuthorization';
+import { Context } from '../..';
+import { observer } from 'mobx-react-lite';
 
 const Header = () => {
   const [isVisibleModal, setIsVisibleModal] = useState<boolean>(false);
+  const { store } = useContext(Context);
 
   return (
     <AppHeader>
@@ -17,7 +20,13 @@ const Header = () => {
           <HeaderNavItem to="/audio" label="Аудиовызов" />
           <HeaderNavItem to="/statistic" label="Статистика" />
         </HeaderNav>
-        <HeaderBtn onClick={() => setIsVisibleModal(true)}>Гость</HeaderBtn>
+        <HeaderBtn
+          onClick={() => {
+            !store.isAuth ? setIsVisibleModal(true) : store.logout();
+          }}
+        >
+          {store.isAuth ? 'Выйти' : 'Войти'}
+        </HeaderBtn>
         <ModalAuthorization visible={isVisibleModal} onClose={() => setIsVisibleModal(false)} />
       </Container>
     </AppHeader>
@@ -40,10 +49,10 @@ const HeaderNavItem: React.FC<HeaderNavItemProps> = ({ to, label }) => {
 };
 
 const AppHeader = styled.header`
-  min-height: 170px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 20px 0;
 
   @media (max-width: 1200px) {
     padding: 20px 0;
@@ -105,4 +114,4 @@ const HeaderBtn = styled.button`
   }
 `;
 
-export default Header;
+export default observer(Header);
