@@ -17,6 +17,7 @@ type Word = {
   wordTranslate: string;
   correct: boolean;
 };
+
 interface SprintGameProps {
   level?: number;
   page?: number;

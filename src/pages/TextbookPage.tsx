@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Hero, Album, Select, Button, Pagination, Subtitle, SprintGame } from '../components';
 import Layout from '../components/Layout/Layout';
 import textBookImg from '../assets/svg/hero-textbook-logo.svg';
@@ -12,10 +12,19 @@ const options = [
   { value: '4', label: 'C1 - Advanced' },
   { value: '5', label: 'C2 - Proficiency' },
 ];
+
 const TextbookPage = () => {
+  const engLevel = localStorage.getItem('engLevel') ? Number(localStorage.getItem('engLevel')) : 0;
+  const page = localStorage.getItem('currentPage') ? Number(localStorage.getItem('currentPage')) : 1;
+
+  const [currentPage, setCurrentPage] = useState(page);
+  const [level, setLevel] = useState(engLevel);
   const [isGame, setISGame] = useState<boolean>(false);
-  const [level, setLevel] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    localStorage.setItem('currentPage', `${currentPage}`);
+    localStorage.setItem('engLevel', `${level}`);
+  }, [currentPage, level]);
 
   if (isGame)
     return (
@@ -23,6 +32,7 @@ const TextbookPage = () => {
         <SprintGame level={level} page={currentPage - 1} gameEnd={() => setISGame(false)} />
       </Layout>
     );
+
   return (
     <Layout>
       <Hero
@@ -41,7 +51,14 @@ const TextbookPage = () => {
       <ControlsWrapper>
         <Selector>
           <Subtitle content="Выберите уровень" />
-          <Select options={options} onChange={value => setLevel(+value)} />
+          <Select
+            defaultIndex={engLevel}
+            options={options}
+            onChange={value => {
+              setLevel(+value);
+              setCurrentPage(1);
+            }}
+          />
         </Selector>
         <ButtonGroup>
           <Button label="Спринт" onClick={() => setISGame(true)} />
