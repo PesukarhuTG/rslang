@@ -59,3 +59,12 @@ nav.burger-active {
 button.active-top {
   display: block;
 }
+
+button[disabled] {
+  opacity: 0.4;
+}
+
+button[disabled]:hover {
+  background-color: var(--primary);
+  cursor: default;
+}
