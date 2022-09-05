@@ -34,7 +34,7 @@ const ModalAuthorization: React.FC<ModalProps> = ({ visible = false, onClose = (
           <ModalInput
             $isRegistration
             type="password"
-            placeholder="Пароль *"
+            placeholder="Пароль (не менее 9 символов) *"
             onChange={event => setPassword(event.target.value)}
             value={password}
           />
@@ -68,6 +68,7 @@ const ModalAuthorization: React.FC<ModalProps> = ({ visible = false, onClose = (
             onChange={event => setPassword(event.target.value)}
             value={password}
           />
+
           <Button
             label="Вход"
             onClick={async () => {
@@ -113,7 +114,7 @@ const ModalInput = styled.input<{
   background-color: var(--main-background);
   border: 1px solid var(--primary);
   border-radius: 10px;
-  font-size: 24px;
+  font-size: 20px;
   color: var(--prime-light);
   outline: none;
 

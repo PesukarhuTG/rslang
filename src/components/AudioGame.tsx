@@ -51,7 +51,6 @@ const AudioGame: React.FC<AudioGameProps> = ({ level = 0, page = null, gameEnd =
     setLoading(true);
     setCurrentPage(currPage);
     setIsPage(true);
-    console.log(currPage);
   }, [newRound, page]);
 
   useEffect(() => {

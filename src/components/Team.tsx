@@ -15,8 +15,10 @@ const Team = () => {
           <TeamItemTitle>Татьяна</TeamItemTitle>
           <TeamItemSubtitle>Frontend developer | Team Lead</TeamItemSubtitle>
           <TeamItemDescription>
-            <li>Lorem ipsum dolor Excepteur sint occaecat </li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </li>
+            <li>Дизайн приложения</li>
+            <li>Настройка проекта и БД</li>
+            <li>Компоненты: кнопки, модальное окно, спиннер, преимущества, компонент звезд, таймер, бургер</li>
+            <li>Организационные моменты</li>
           </TeamItemDescription>
         </div>
       </TeamItem>
@@ -29,10 +31,10 @@ const Team = () => {
           <TeamItemTitle>Алексей</TeamItemTitle>
           <TeamItemSubtitle>Frontend-developer</TeamItemSubtitle>
           <TeamItemDescription>
-            <li>Lorem ipsum dolor</li>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
+            <li>Роутинг страниц</li>
+            <li>Раздел «Учебник» (сборка страницы, карточки, получение данных + внедрение игр)</li>
+            <li>Игра «Спринт»</li>
+            <li>Игра «Аудиовызов»</li>
           </TeamItemDescription>
         </div>
       </TeamItem>
@@ -45,10 +47,9 @@ const Team = () => {
           <TeamItemTitle>Сергей</TeamItemTitle>
           <TeamItemSubtitle>Frontend-developer</TeamItemSubtitle>
           <TeamItemDescription>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-            <li>Lorem ipsum dolor</li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+            <li>Компоненты: header, footer, hero, селект по выбору языка, пагинация, возможности, о команде</li>
+            <li>Раздел «Учебник» (стилизация карточек по уровню сложности)</li>
+            <li>Авторизация: настройка mobx, axios, forms, логика регистрации и авторизации</li>
           </TeamItemDescription>
         </div>
       </TeamItem>

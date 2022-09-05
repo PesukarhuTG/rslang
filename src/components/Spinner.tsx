@@ -3,8 +3,20 @@ import styled from 'styled-components';
 import { Spin } from 'antd';
 
 const Spinner = () => {
-  return <StyledSpin size="large" />;
+  return (
+    <SpinnerWrapper>
+      <StyledSpin size="large" />;
+    </SpinnerWrapper>
+  );
 };
+
+const SpinnerWrapper = styled.div`
+  with: 100%;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 const StyledSpin = styled(Spin)`
   display: flex;
