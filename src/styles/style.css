@@ -55,3 +55,7 @@ a {
 nav.burger-active {
   right: 0;
 }
+
+button.active-top {
+  display: block;
+}
