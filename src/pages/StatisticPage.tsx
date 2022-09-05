@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Layout, Button, Modal } from '../components';
+import { ModalAuthorization } from '../components';
 
 const StatisticPage = () => {
   const [visible, setVisible] = useState(false);
   const navigate = useNavigate();
+  const [isVisibleModal, setIsVisibleModal] = useState<boolean>(false);
 
   return (
     <Layout>
@@ -18,8 +20,12 @@ const StatisticPage = () => {
         <ModalContent>
           <p>К сожалению, при гостевом доступе просмотр статистики не доступен</p>
         </ModalContent>
-        <Button label={'Главная'} onClick={() => navigate('/', { replace: true })} />
+        <ButtonGroup>
+          <Button label={'Главная'} onClick={() => navigate('/', { replace: true })} />
+          <Button label={'Регистрация'} onClick={() => setIsVisibleModal(true)} />
+        </ButtonGroup>
       </Modal>
+      <ModalAuthorization visible={isVisibleModal} onClose={() => setIsVisibleModal(false)} />
     </Layout>
   );
 };
@@ -38,19 +44,19 @@ const ModalTitle = styled.p`
   text-align: center;
   font-size: 36px;
   font-weight: 700;
-
-  @media (max-width: 600px) {
-    font-size: 30px;
-  }
 `;
 
 const ModalContent = styled.div`
   text-align: center;
   padding: 20px 0;
+`;
 
-  @media (max-width: 600px) {
-    font-size: 20px;
-  }
+const ButtonGroup = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 0;
 `;
 
 export default StatisticPage;
