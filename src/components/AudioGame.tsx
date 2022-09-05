@@ -174,22 +174,37 @@ const AudioGame: React.FC<AudioGameProps> = ({ level = 0, page = null, gameEnd =
 
 const GameContainer = styled.div`
   width: 100%;
-  height: 75vh;
-
+  height: 100%;
+  margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  gap: 40px;
+
+  @media (max-width: 800px) {
+    gap: 20px;
+  }
 `;
 
 const GameQuestions = styled.div`
-  width: 30%;
+  height: 300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const GameAnswers = styled.div`
-  gap: 40px;
+  gap: 30px;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  padding: 40px 30px;
+  border-radius: 10px;
+  background-color: var(--primary-dark);
 `;
 
 export default AudioGame;

@@ -44,26 +44,30 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 10px;
+  gap: 20px;
   width: 100%;
 `;
 
 const AudioContent = styled.div`
   display: flex;
-  align-items: stretch;
+  align-items: center;
+  margin: auto;
 `;
+
 const WordBody = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-around;
 `;
+
 const WordImage = styled.img`
-  width: 100%;
-  height: 100%;
+  height: 270px;
+  width: auto;
 `;
+
 const WordDescription = styled.div`
-  font-size: 36px;
-  line-height: 54px;
+  font-size: 30px;
+  line-height: 1.5;
   text-align: center;
 `;
 const WordAudio = styled.img<{
@@ -77,8 +81,8 @@ const WordAudio = styled.img<{
       `;
     } else {
       return css`
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
       `;
     }
   }}
