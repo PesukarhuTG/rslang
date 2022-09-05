@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { MemoryCard } from '../types/responses';
-import { arrayShuffle, createAudio, getSeveralPageData, getTranslaties } from '../utils';
+import { arrayShuffle, createAudio, getButtonType, getSeveralPageData, getTranslaties } from '../utils';
 import AudioDisplay from './AudioDisplay';
 import Button from './Button';
 import Modal from './Modal';
@@ -116,10 +116,6 @@ const AudioGame: React.FC<AudioGameProps> = ({ level = 0, page = null, gameEnd =
     setCurrentWords([]);
     setCorrect([]);
     setWrong([]);
-  };
-
-  const getButtonType = (targetValue: number, value: number) => {
-    return value === targetValue ? 'primary' : value === -targetValue ? 'wrong' : 'bordered';
   };
 
   if (!translateArr.length) return <Spinner />;
