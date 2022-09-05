@@ -147,10 +147,6 @@ const StatisticRow = styled.li`
   gap: 20px;
 
   @media (max-width: 760px) {
-    font-size: 22px;
-  }
-
-  @media (max-width: 540px) {
     font-size: 18px;
     gap: 8px;
   }
