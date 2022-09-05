@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import headerBtnIco from '../../assets/svg/header-btn-ico.svg';
 import { Link, useLocation } from 'react-router-dom';

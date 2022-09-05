@@ -1,5 +1,8 @@
+import axios from 'axios';
 import { makeAutoObservable } from 'mobx';
+import { LoginResponse } from '../types/responses';
 import { registrationUser, loginUser } from '../utils/authRequest';
+import createUrl from '../utils/createUrl';
 
 export default class Store {
   isAuth: boolean = false;
@@ -40,5 +43,15 @@ export default class Store {
     localStorage.removeItem('userId');
     localStorage.removeItem('userName');
     this.setAuth(false);
+  }
+
+  async checkAuth(): Promise<void> {
+    try {
+      const response = await axios.get<LoginResponse>(createUrl(`users/${localStorage.getItem('userId')}/token`));
+      localStorage.setItem('tokenUser', response.data.token);
+      this.setAuth(true);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
