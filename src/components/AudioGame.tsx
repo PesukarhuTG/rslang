@@ -46,7 +46,7 @@ const AudioGame: React.FC<AudioGameProps> = ({ level = 0, page = null, gameEnd =
 
   useEffect(() => {
     setIsPage(false);
-    const currPage = typeof page === 'number' ? page : new Date().getSeconds() % 30;
+    const currPage = page ?? new Date().getSeconds() % 30;
     setNewRound(false);
     setLoading(true);
     setCurrentPage(currPage);
