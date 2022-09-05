@@ -1,5 +1,5 @@
 import React from 'react';
-import { AudioGame, Layout } from '../components';
+import { Layout } from '../components';
 
 const NotFound = () => {
   return <Layout disableFooter={true}></Layout>;

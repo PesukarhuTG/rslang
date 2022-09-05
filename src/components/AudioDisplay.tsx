@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import soundico from '../assets/svg/sound-icon.svg';
 import { DB_LINK } from '../types/DataBaseTypes';
 import { MemoryCard } from '../types/responses';
@@ -45,7 +45,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 10px;
-  min-width: 390px;
   width: 100%;
 `;
 
@@ -72,11 +71,15 @@ const WordAudio = styled.img<{
 }>`
   ${({ $isAnswer }) => {
     if (!$isAnswer) {
-      return `width: 100px;
-            height: 100px;`;
+      return css`
+        width: 100px;
+        height: 100px;
+      `;
     } else {
-      return `width: 50px;
-      height: 50px;`;
+      return css`
+        width: 50px;
+        height: 50px;
+      `;
     }
   }}
 
@@ -96,6 +99,7 @@ const WrapperIcon = styled.div`
 `;
 const HightPerformer = styled.div`
   width: 1px;
+  max-height: 350px;
   padding-top: 66%;
 `;
 const IconHightPerformer = styled.div`

@@ -117,7 +117,13 @@ const AudioGame: React.FC<AudioGameProps> = ({ level = 0, page = null, gameEnd =
     setCorrect([]);
     setWrong([]);
   };
-  if (!translateArr.length) return <Spinner></Spinner>;
+
+  const getButtonType = (targetValue: number, value: number) => {
+    return value === targetValue ? 'primary' : value === -targetValue ? 'wrong' : 'bordered';
+  };
+
+  if (!translateArr.length) return <Spinner />;
+
   return (
     <GameContainer>
       <GameQuestions>
@@ -127,30 +133,32 @@ const AudioGame: React.FC<AudioGameProps> = ({ level = 0, page = null, gameEnd =
       <GameAnswers>
         <Button
           label={words[translateArr[0]].wordTranslate}
-          type={type === 1 ? 'primary' : type === -1 ? 'wrong' : 'bordered'}
+          type={getButtonType(1, type)}
           onClick={() => AnswerClick(1)}
           disabled={type === 0 ? false : true}
         />
         <Button
           label={words[translateArr[1]].wordTranslate}
-          type={type === 2 ? 'primary' : type === -2 ? 'wrong' : 'bordered'}
+          type={getButtonType(2, type)}
           onClick={() => AnswerClick(2)}
           disabled={type === 0 ? false : true}
         />
         <Button
           label={words[translateArr[2]].wordTranslate}
-          type={type === 3 ? 'primary' : type === -3 ? 'wrong' : 'bordered'}
+          type={getButtonType(3, type)}
           onClick={() => AnswerClick(3)}
           disabled={type === 0 ? false : true}
         />
         <Button
           label={words[translateArr[3]].wordTranslate}
-          type={type === 4 ? 'primary' : type === -4 ? 'wrong' : 'bordered'}
+          type={getButtonType(4, type)}
           onClick={() => AnswerClick(4)}
           disabled={type === 0 ? false : true}
         />
       </GameAnswers>
+
       <Button label="Дальше" type="bordered" onClick={nextRound} />
+
       <Modal
         visible={round < 20 ? false : true}
         onClose={modalClose}
@@ -167,16 +175,17 @@ const AudioGame: React.FC<AudioGameProps> = ({ level = 0, page = null, gameEnd =
     </GameContainer>
   );
 };
+
 const GameContainer = styled.div`
   width: 100%;
   height: 75vh;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 100px;
 `;
+
 const GameQuestions = styled.div`
   width: 30%;
 `;
