@@ -1,5 +1,5 @@
-import { observer } from 'mobx-react-lite';
 import React, { useContext, useEffect } from 'react';
+import { observer } from 'mobx-react-lite';
 import { Route, Routes } from 'react-router-dom';
 import { Context } from '.';
 import { MainPage, TextbookPage, SprintPage, AudioPage, StatisticPage, NotFound } from './pages';

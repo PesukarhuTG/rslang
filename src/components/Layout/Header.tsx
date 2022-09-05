@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import headerBtnIco from '../../assets/svg/header-btn-ico.svg';
 import { Link, useLocation } from 'react-router-dom';
@@ -14,6 +14,19 @@ const Header = () => {
     const burger = document.querySelector('.nav') as HTMLElement;
     burger?.classList.toggle('burger-active');
   };
+
+  useEffect(() => {
+    if (isVisibleModal) {
+      const widthScroll = window.innerWidth - document.body.offsetWidth;
+
+      document.body.style.cssText = `
+          overflow: hidden;
+          padding-right: ${widthScroll}px;
+      `;
+    } else {
+      document.body.style.cssText = '';
+    }
+  }, [isVisibleModal]);
 
   return (
     <AppHeader>

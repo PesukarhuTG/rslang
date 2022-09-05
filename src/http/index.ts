@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { LoginResponse } from '../types/responses';
-import createUrl from '../utils/createUrl';
 
 const axiosApi = axios.create();
 

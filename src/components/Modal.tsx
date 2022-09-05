@@ -42,7 +42,7 @@ const ModalOverlay = styled.div`
   right: 0;
   bottom: 0;
   background-color: var(--modal-background);
-  z-index: 1;
+  z-index: 4;
 `;
 
 const ModalWindow = styled.div`
@@ -59,7 +59,7 @@ const ModalWindow = styled.div`
   border: 3px solid var(--primary);
   background-color: var(--main-background);
   border-radius: 20px;
-  z-index: 2;
+  z-index: 5;
 `;
 
 const ButtonClose = styled.button`
