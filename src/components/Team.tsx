@@ -13,7 +13,7 @@ const Team = () => {
         </TeamItemImage>
         <div>
           <TeamItemTitle>Татьяна</TeamItemTitle>
-          <TeamItemSubtitle>Team Lead | Frontend developer</TeamItemSubtitle>
+          <TeamItemSubtitle>Frontend developer | Team Lead</TeamItemSubtitle>
           <TeamItemDescription>
             <li>Lorem ipsum dolor Excepteur sint occaecat </li>
             <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod </li>
@@ -67,6 +67,10 @@ const TeamSection = styled.div`
   @media (max-width: 1420px) {
     grid-template-columns: 1fr;
   }
+
+  @media (max-width: 460px) {
+    margin-bottom: 30px;
+  }
 `;
 
 const TeamItem = styled.div`
@@ -86,6 +90,10 @@ const TeamItem = styled.div`
   @media (max-width: 1020px) {
     flex-direction: column;
   }
+
+  @media (max-width: 530px) {
+    margin-bottom: 20px;
+  }
 `;
 
 const TeamItemImage = styled.div`
@@ -100,13 +108,17 @@ const TeamItemImage = styled.div`
     margin-right: 0;
     align-self: center;
   }
+
+  @media (max-width: 530px) {
+    margin-top: 0;
+  }
 `;
 
 const TeamItemTitle = styled.h4`
   margin-top: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   color: var(--primary);
-  font-size: 36px;
+  font-size: 30px;
   font-weight: 700;
 
   @media (max-width: 1420px) {
@@ -116,18 +128,33 @@ const TeamItemTitle = styled.h4`
   @media (max-width: 930px) {
     margin-top: 30px;
   }
+
+  @media (max-width: 530px) {
+    font-size: 26px;
+  }
 `;
 
 const TeamItemSubtitle = styled.p`
   margin-bottom: 20px;
+  font-size: 24px;
   font-style: italic;
   font-weight: 700;
+
+  @media (max-width: 530px) {
+    font-size: 22px;
+  }
 `;
 
 const TeamItemDescription = styled.ul`
-  margin-top: 40px;
+  margin-top: 20px;
+  font-size: 20px;
+  line-height: 1.6;
   padding-left: 30px;
   padding-right: 10px;
+
+  @media (max-width: 530px) {
+    font-size: 18px;
+  }
 `;
 
 export default Team;

@@ -10,10 +10,16 @@ const Title: React.FC<TitleProps> = ({ content }) => {
 };
 
 const Headling = styled.h3`
-  margin-top: 100px;
+  margin-top: 80px;
   margin-bottom: 80px;
-  font-size: 54px;
+  font-size: 40px;
   font-weight: 700;
+
+  @media (max-width: 530px) {
+    margin-top: 60px;
+    margin-bottom: 40px;
+    font-size: 30px;
+  }
 `;
 
 export default Title;

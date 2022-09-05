@@ -51,3 +51,11 @@ a {
   padding-left: 40px;
   padding-right: 40px;
 }
+
+nav.burger-active {
+  right: 0;
+}
+
+button.active-top {
+  display: block;
+}

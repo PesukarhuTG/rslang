@@ -88,8 +88,6 @@ const StatisticResults: React.FC<StatisticResultsProps> = ({ data }) => {
 
 const Container = styled.div`
   width: 100%;
-  padding-left: 40px;
-
   display: flex;
   flex-direction: column;
   overflow: auto;
@@ -100,6 +98,10 @@ const GameStatisticHeader = styled.h2`
   font-size: 36px;
   line-height: 54px;
   font-weight: 700;
+
+  @media (max-width: 760px) {
+    font-size: 30px;
+  }
 `;
 
 const GameScore = styled.p`
@@ -113,6 +115,8 @@ const GameStatistic = styled.div`
 
   display: flex;
   flex-direction: column;
+  padding-left: 10px;
+  background-color: var(--primary-dark);
   gap: 30px;
 `;
 
@@ -130,12 +134,22 @@ const StatisticInnerHeader = styled.h3<{
   }}
   font-weight: 700;
   font-size: 36px;
+  margin: 10px 0;
+
+  @media (max-width: 760px) {
+    font-size: 30px;
+  }
 `;
 
 const StatisticRow = styled.li`
   display: flex;
   align-items: center;
   gap: 20px;
+
+  @media (max-width: 760px) {
+    font-size: 18px;
+    gap: 8px;
+  }
 `;
 
 const Word = styled.span`
@@ -160,6 +174,10 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 20px;
+
+  @media (max-width: 550px) {
+    flex-direction: column;
+  }
 `;
 
 export default ModalStatistic;

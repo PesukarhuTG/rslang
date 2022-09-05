@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-type ButtonType = 'primary' | 'wrong' | 'bordered';
+export type ButtonType = 'primary' | 'wrong' | 'bordered';
 
 interface ButtonProps {
   label: string;
@@ -33,6 +33,11 @@ const StyledButton = styled.button<{
 
   &:hover {
     color: var(--btn-font-hover);
+  }
+
+  @media (max-width: 500px) {
+    font-size: 20px;
+    padding: 0 20px;
   }
 
   ${({ $type }) => {

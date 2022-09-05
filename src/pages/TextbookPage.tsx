@@ -1,5 +1,5 @@
+import { Hero, Album, Select, Button, Pagination, Subtitle, SprintGame, AudioGame } from '../components';
 import React, { useEffect, useState } from 'react';
-import { Hero, Album, Select, Button, Pagination, Subtitle, SprintGame } from '../components';
 import Layout from '../components/Layout/Layout';
 import textBookImg from '../assets/svg/hero-textbook-logo.svg';
 import styled from 'styled-components';
@@ -13,23 +13,31 @@ const options = [
   { value: '5', label: 'C2 - Proficiency' },
 ];
 
+type PageView = 'TextBook' | 'Sprint' | 'Audio';
+
 const TextbookPage = () => {
   const engLevel = localStorage.getItem('engLevel') ? Number(localStorage.getItem('engLevel')) : 0;
   const page = localStorage.getItem('currentPage') ? Number(localStorage.getItem('currentPage')) : 1;
 
   const [currentPage, setCurrentPage] = useState(page);
   const [level, setLevel] = useState(engLevel);
-  const [isGame, setISGame] = useState<boolean>(false);
+  const [view, setView] = useState<PageView>('TextBook');
 
   useEffect(() => {
     localStorage.setItem('currentPage', `${currentPage}`);
     localStorage.setItem('engLevel', `${level}`);
   }, [currentPage, level]);
 
-  if (isGame)
+  if (view === 'Sprint')
     return (
       <Layout disableFooter={true}>
-        <SprintGame level={level} page={currentPage - 1} gameEnd={() => setISGame(false)} />
+        <SprintGame level={level} page={currentPage - 1} gameEnd={() => setView('TextBook')} />
+      </Layout>
+    );
+  if (view === 'Audio')
+    return (
+      <Layout disableFooter={true}>
+        <AudioGame level={level} page={currentPage - 1} gameEnd={() => setView('TextBook')} />
       </Layout>
     );
 
@@ -40,7 +48,7 @@ const TextbookPage = () => {
         content={
           <>
             <Hero.Title>
-              <strong>"Электронный учебник"</strong>
+              <strong>«Электронный учебник»</strong>
             </Hero.Title>
             <Hero.Description>
               Более 3600 слов, разбитых на разделы по уровню подготовки. Выбирай уровень, который подойдет именно тебе!
@@ -51,19 +59,22 @@ const TextbookPage = () => {
       <ControlsWrapper>
         <Selector>
           <Subtitle content="Выберите уровень" />
-          <Select
-            defaultIndex={engLevel}
-            options={options}
-            onChange={value => {
-              setLevel(+value);
-              setCurrentPage(1);
-            }}
-          />
+          <Settings>
+            <Select
+              defaultIndex={engLevel}
+              options={options}
+              onChange={value => {
+                setLevel(+value);
+                setCurrentPage(1);
+              }}
+            />
+            <ButtonGroup>
+              <Button label="Спринт" onClick={() => setView('Sprint')} />
+              <Button label="Аудиовызов" onClick={() => setView('Audio')} />
+            </ButtonGroup>
+          </Settings>
         </Selector>
-        <ButtonGroup>
-          <Button label="Спринт" onClick={() => setISGame(true)} />
-          <Button label="Аудиовызов" />
-        </ButtonGroup>
+
         <PaginationWrapper>
           <Pagination page={+currentPage} onChange={page => setCurrentPage(page)} total={30} />
         </PaginationWrapper>
@@ -74,25 +85,35 @@ const TextbookPage = () => {
 };
 
 const ControlsWrapper = styled.div`
-  display: grid;
-  grid-auto-flow: row;
-  grid-template-areas:
-    'sel btn'
-    'pag pag';
-  grid-row-gap: 90px;
-  margin-bottom: 70px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 40px;
 `;
 
 const Selector = styled.div`
-  grid-area: sel;
-  width: fit-content;
+  width: 100%;
   & > :first-child {
     margin-bottom: 40px;
   }
 `;
 
+const Settings = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    gap: 30px;
+  }
+`;
+
 const ButtonGroup = styled.div`
-  grid-area: btn;
   display: flex;
   gap: 20px;
   justify-content: end;
@@ -100,8 +121,9 @@ const ButtonGroup = styled.div`
 `;
 
 const PaginationWrapper = styled.div`
-  grid-area: pag;
   justify-self: center;
+  align-self: center;
+  padding: 20px 0;
 `;
 
 export default TextbookPage;

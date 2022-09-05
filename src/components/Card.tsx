@@ -105,6 +105,10 @@ const WordTranscription = styled.div<{
   font-weight: 700;
   font-size: 30px;
   color: ${({ $level }) => `var(--language-level-${$level + 1})`};
+
+  @media (max-width: 500px) {
+    font-size: 24px;
+  }
 `;
 
 const WordAudio = styled.div<{
@@ -146,6 +150,10 @@ const WordTranslation = styled.div`
   font-weight: 700;
   font-size: 30px;
   color: var(--primary-light);
+
+  @media (max-width: 500px) {
+    font-size: 24px;
+  }
 `;
 
 const WordMeaning = styled.div`
@@ -157,16 +165,28 @@ const WordMeaning = styled.div`
   & > *{
     margin: 0px;
   }
+
+  @media (max-width: 500px) {
+    padding 10px 20px;
+  }
 `;
 
 const Example = styled.p`
   font-size: 22px;
   line-height: 1.7;
+
+  @media (max-width: 500px) {
+    font-size: 18px;
+  }
 `;
 
 const Translate = styled.p`
   font-size: 22px;
   line-height: 1.7;
+
+  @media (max-width: 500px) {
+    font-size: 18px;
+  }
 `;
 
 export default FlashCard;
