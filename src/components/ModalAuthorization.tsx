@@ -40,6 +40,7 @@ const ModalAuthorization: React.FC<ModalProps> = ({ visible = false, onClose = (
           />
           <Button
             label="Регистрация"
+            disabled={password.length < 8}
             onClick={async () => {
               await store.registration(name, email, password);
               if (store.isAuth) {
