@@ -17,7 +17,7 @@ export default class Store {
       const response = await registrationUser(name, email, password);
       const res = await this.login(email, password);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 

@@ -1,31 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { Layout, Button, Modal } from '../components';
-import { ModalAuthorization } from '../components';
+import { Layout, Button, Hero } from '../components';
+import statImg from '../assets/svg/stat.svg';
 
 const StatisticPage = () => {
-  const [visible, setVisible] = useState(false);
   const navigate = useNavigate();
-  const [isVisibleModal, setIsVisibleModal] = useState<boolean>(false);
 
   return (
     <Layout>
+      <Hero
+        image={statImg}
+        content={
+          <>
+            <Hero.Title>
+              <strong>Статистика обучения</strong>
+            </Hero.Title>
+            <Hero.Description>
+              К сожалению, данный раздел находится в разработке и в данный момент не доступен
+            </Hero.Description>
+          </>
+        }
+      />
       <Wrapper>
-        <Button label={'Моя статистика'} onClick={() => setVisible(!visible)} />
+        <Button label={'На главную'} onClick={() => navigate('/', { replace: true })} />
       </Wrapper>
-
-      <Modal visible={visible} onClose={() => setVisible(false)}>
-        <ModalTitle>Просмотр статистики</ModalTitle>
-        <ModalContent>
-          <p>К сожалению, при гостевом доступе просмотр статистики не доступен</p>
-        </ModalContent>
-        <ButtonGroup>
-          <Button label={'Главная'} onClick={() => navigate('/', { replace: true })} />
-          <Button label={'Регистрация'} onClick={() => setIsVisibleModal(true)} />
-        </ButtonGroup>
-      </Modal>
-      <ModalAuthorization visible={isVisibleModal} onClose={() => setIsVisibleModal(false)} />
     </Layout>
   );
 };
@@ -34,29 +33,11 @@ const Wrapper = styled.div`
   max-width: 300px;
   width: 100%;
   display: flex;
+  flex-direction
   align-items: center;
   justify-content: center;
   margin: auto;
-`;
-
-const ModalTitle = styled.p`
-  padding: 40px 0;
-  text-align: center;
-  font-size: 36px;
-  font-weight: 700;
-`;
-
-const ModalContent = styled.div`
-  text-align: center;
-  padding: 20px 0;
-`;
-
-const ButtonGroup = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  padding: 40px 0;
+  padding-bottom: 40px;
 `;
 
 export default StatisticPage;
