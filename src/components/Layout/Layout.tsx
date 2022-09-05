@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import TopScrollButton from '../TopScrollButton';
 import styled from 'styled-components';
 
 interface LayoutProps {
@@ -10,11 +11,23 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children, disableHeader = false, disableFooter = false }) => {
+  window.addEventListener('scroll', () => {
+    const clientHeight = document.documentElement.clientHeight as number;
+    const topButton = document.querySelector('.top-btn') as HTMLElement;
+
+    if (window.scrollY > clientHeight / 4) {
+      topButton.classList.add('active-top');
+    } else {
+      topButton.classList.remove('active-top');
+    }
+  });
+
   return (
     <Container $position={disableFooter}>
       {!disableHeader && <Header />}
       {children}
       {!disableFooter && <Footer />}
+      <TopScrollButton />
     </Container>
   );
 };
