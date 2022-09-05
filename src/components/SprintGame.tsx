@@ -144,6 +144,9 @@ const SprintGame: React.FC<SprintGameProps> = ({ level = 0, page = null, gameEnd
         <Button label="Верно" onClick={() => sprintClick(true)} />
         <Button label="Неверно" type="wrong" onClick={() => sprintClick(false)} />
       </GameButtons>
+
+      <ControlDescription>для выбора ответа можно использовать ◄ и ► на клавиатуре</ControlDescription>
+
       <Modal visible={isModal} onClose={modalClose}>
         <ModalStatistic correct={correct} wrong={wrong} score={score} onButtonClick={gameRestart} />
       </Modal>
@@ -187,6 +190,13 @@ const GameButtons = styled.div`
   align-items: center;
   justify-content: center;
   gap: 30px;
+`;
+
+const ControlDescription = styled.p`
+  padding: 30px 0 10px;
+  font-size: 14px;
+  text-align: center;
+  opacity: 0.8;
 `;
 
 export default SprintGame;
