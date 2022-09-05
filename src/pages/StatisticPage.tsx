@@ -18,10 +18,7 @@ const StatisticPage = () => {
         <ModalContent>
           <p>К сожалению, при гостевом доступе просмотр статистики не доступен</p>
         </ModalContent>
-        <ButtonGroup>
-          <Button label={'Главная'} onClick={() => navigate('/', { replace: true })} />
-          <Button label={'Регистрация'} onClick={() => console.log('переход к регистрации')} />
-        </ButtonGroup>
+        <Button label={'Главная'} onClick={() => navigate('/', { replace: true })} />
       </Modal>
     </Layout>
   );
@@ -53,18 +50,6 @@ const ModalContent = styled.div`
 
   @media (max-width: 600px) {
     font-size: 20px;
-  }
-`;
-
-const ButtonGroup = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  padding: 40px 0;
-
-  @media (max-width: 440px) {
-    flex-direction: column;
   }
 `;
 
