@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-type ButtonType = 'primary' | 'wrong' | 'bordered';
+export type ButtonType = 'primary' | 'wrong' | 'bordered';
 
 interface ButtonProps {
   label: string;

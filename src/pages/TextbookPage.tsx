@@ -1,5 +1,5 @@
+import { Hero, Album, Select, Button, Pagination, Subtitle, SprintGame, AudioGame } from '../components';
 import React, { useEffect, useState } from 'react';
-import { Hero, Album, Select, Button, Pagination, Subtitle, SprintGame } from '../components';
 import Layout from '../components/Layout/Layout';
 import textBookImg from '../assets/svg/hero-textbook-logo.svg';
 import styled from 'styled-components';
@@ -13,23 +13,31 @@ const options = [
   { value: '5', label: 'C2 - Proficiency' },
 ];
 
+type PageView = 'TextBook' | 'Sprint' | 'Audio';
+
 const TextbookPage = () => {
   const engLevel = localStorage.getItem('engLevel') ? Number(localStorage.getItem('engLevel')) : 0;
   const page = localStorage.getItem('currentPage') ? Number(localStorage.getItem('currentPage')) : 1;
 
   const [currentPage, setCurrentPage] = useState(page);
   const [level, setLevel] = useState(engLevel);
-  const [isGame, setISGame] = useState<boolean>(false);
+  const [view, setView] = useState<PageView>('TextBook');
 
   useEffect(() => {
     localStorage.setItem('currentPage', `${currentPage}`);
     localStorage.setItem('engLevel', `${level}`);
   }, [currentPage, level]);
 
-  if (isGame)
+  if (view === 'Sprint')
     return (
       <Layout disableFooter={true}>
-        <SprintGame level={level} page={currentPage - 1} gameEnd={() => setISGame(false)} />
+        <SprintGame level={level} page={currentPage - 1} gameEnd={() => setView('TextBook')} />
+      </Layout>
+    );
+  if (view === 'Audio')
+    return (
+      <Layout disableFooter={true}>
+        <AudioGame level={level} page={currentPage - 1} gameEnd={() => setView('TextBook')} />
       </Layout>
     );
 
@@ -61,11 +69,12 @@ const TextbookPage = () => {
               }}
             />
             <ButtonGroup>
-              <Button label="Спринт" onClick={() => setISGame(true)} />
-              <Button label="Аудиовызов" />
+              <Button label="Спринт" onClick={() => setView('Sprint')} />
+              <Button label="Аудиовызов" onClick={() => setView('Audio')} />
             </ButtonGroup>
           </Settings>
         </Selector>
+
         <PaginationWrapper>
           <Pagination page={+currentPage} onChange={page => setCurrentPage(page)} total={30} />
         </PaginationWrapper>
