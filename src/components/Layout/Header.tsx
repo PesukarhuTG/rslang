@@ -10,11 +10,16 @@ const Header = () => {
   const [isVisibleModal, setIsVisibleModal] = useState<boolean>(false);
   const { store } = useContext(Context);
 
+  const onToggle = (): void => {
+    const burger = document.querySelector('.nav') as HTMLElement;
+    burger?.classList.toggle('burger-active');
+  };
+
   return (
     <AppHeader>
       <HeaderLogo to="/">RSS Lang</HeaderLogo>
       <Container>
-        <HeaderNav>
+        <HeaderNav className="nav">
           <HeaderNavItem to="/textbook" label="Учебник" />
           <HeaderNavItem to="/sprint" label="Спринт" />
           <HeaderNavItem to="/audio" label="Аудиовызов" />
@@ -27,6 +32,13 @@ const Header = () => {
         >
           {store.isAuth ? 'Выйти' : 'Войти'}
         </HeaderBtn>
+        <HeaderBurger className="burger-menu" onClick={onToggle}>
+          <BurgerMenuLines>
+            <BurgerLine />
+            <BurgerLine />
+            <BurgerLine />
+          </BurgerMenuLines>
+        </HeaderBurger>
         <ModalAuthorization visible={isVisibleModal} onClose={() => setIsVisibleModal(false)} />
       </Container>
     </AppHeader>
@@ -53,12 +65,6 @@ const AppHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
-
-  @media (max-width: 1200px) {
-    padding: 20px 0;
-    flex-direction: column;
-    gap: 20px;
-  }
 `;
 
 const HeaderLogo = styled(Link)`
@@ -67,7 +73,11 @@ const HeaderLogo = styled(Link)`
   font-size: 54px;
 
   &:hover {
-    color: var(--primary);
+    color: var(--primary-light) !important;
+  }
+
+  @media (max-width: 680px) {
+    font-size: 34px;
   }
 `;
 
@@ -75,16 +85,41 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 1200px) {
+    gap: 20px;
+  }
+
+  @media (max-width: 680px) {
+    gap: 10px;
+  }
 `;
 
 const HeaderNav = styled.nav`
   display: flex;
   margin-left: auto;
-  margin-right: 40px;
-  gap: 40px;
+  margin-right: 30px;
+  gap: 30px;
 
   &:nth-child(1):hover {
     color: var(--primary);
+  }
+
+  @media (max-width: 1200px) {
+    flex-direction: column;
+    margin-right: 0;
+    padding-top: 100px;
+    padding-left: 40px;
+    gap: 20px;
+
+    position: fixed;
+    top: 0;
+    right: -360px;
+    width: 360px;
+    height: 100%;
+    background-color: var(--primary-dark);
+    transition: right 0.4s;
+    z-index: 2;
   }
 `;
 
@@ -92,9 +127,10 @@ const HeaderLink = styled(Link)<{
   $active: boolean;
 }>`
   color: ${({ $active }) => ($active ? 'var(--primary)' : 'var(--primary-light)')} !important;
+  transition: all 0.3s ease;
 
   &:hover {
-    color: var(--primary);
+    color: var(--primary) !important;
   }
 `;
 
@@ -112,6 +148,41 @@ const HeaderBtn = styled.button`
   &:hover {
     background-color: var(--btn-primary-hover);
   }
+
+  @media (max-width: 680px) {
+    font-size: 20px;
+    padding-left: 60px;
+    padding-right: 20px;
+    height: 50px;
+  }
+`;
+
+const HeaderBurger = styled.div`
+  display: none;
+  z-index: 3;
+
+  @media (max-width: 1200px) {
+    display: block;
+  }
+`;
+
+const BurgerMenuLines = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  cursor: pointer;
+
+  &:hover > * {
+    background-color: var(--primary);
+  }
+`;
+
+const BurgerLine = styled.div`
+  width: 30px;
+  height: 2px;
+  margin: 4px 0;
+  background-color: var(--primary-light);
+  transition: all 0.3s ease;
 `;
 
 export default observer(Header);
