@@ -25,15 +25,11 @@ axiosApi.interceptors.response.use(
     return config;
   },
   async error => {
-    const originalRequest = error.config;
     if (parseInt(error.response.status) === 401) {
-      try {
-        const response = await axios.get<LoginResponse>(createUrl(`users/${localStorage.getItem('userId')}/token`));
-        localStorage.setItem('token', response.data.token);
-        return axiosApi.request(originalRequest);
-      } catch (e) {
-        console.log(e);
-      }
+      localStorage.removeItem('tokenUser');
+      localStorage.removeItem('refreshToken');
+      localStorage.removeItem('userId');
+      localStorage.removeItem('userName');
     }
     throw error;
   }

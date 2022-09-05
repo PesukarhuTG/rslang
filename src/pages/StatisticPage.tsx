@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Layout, Button, Modal } from '../components';
+import { ModalAuthorization } from '../components';
 
 const StatisticPage = () => {
   const [visible, setVisible] = useState(false);
   const navigate = useNavigate();
+  const [isVisibleModal, setIsVisibleModal] = useState<boolean>(false);
 
   return (
     <Layout>
@@ -20,9 +22,10 @@ const StatisticPage = () => {
         </ModalContent>
         <ButtonGroup>
           <Button label={'Главная'} onClick={() => navigate('/', { replace: true })} />
-          <Button label={'Регистрация'} onClick={() => console.log('переход к регистрации')} />
+          <Button label={'Регистрация'} onClick={() => setIsVisibleModal(true)} />
         </ButtonGroup>
       </Modal>
+      <ModalAuthorization visible={isVisibleModal} onClose={() => setIsVisibleModal(false)} />
     </Layout>
   );
 };

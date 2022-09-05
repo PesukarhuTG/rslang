@@ -9,7 +9,7 @@ const App = () => {
 
   useEffect(() => {
     if (localStorage.getItem('tokenUser')) {
-      store.checkAuth();
+      store.setAuth(true);
     }
   }, []);
 
