@@ -92,6 +92,10 @@ const HeaderLogo = styled(Link)`
   @media (max-width: 680px) {
     font-size: 34px;
   }
+
+  @media (max-width: 460px) {
+    font-size: 30px;
+  }
 `;
 
 const Container = styled.div`

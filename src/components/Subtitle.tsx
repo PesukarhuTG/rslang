@@ -12,6 +12,10 @@ const Subtitle: React.FC<SubtitleProps> = ({ content }) => {
 const Headling = styled.h3`
   font-size: 36px;
   font-weight: 700;
+
+  @media (max-width: 460px) {
+    font-size: 30px;
+  }
 `;
 
 export default Subtitle;
