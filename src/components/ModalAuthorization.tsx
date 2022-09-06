@@ -136,6 +136,13 @@ const ModalInput = styled.input<{
     font-size: 20px;
     padding: 18px 20px;
   }
+
+  @media (max-width: 460px) {
+    font-size: 16px;
+    &[type='password'] {
+      margin-bottom: 20px;
+    }
+  }
 `;
 
 const ModalButton = styled.p<{
@@ -155,6 +162,10 @@ const ModalButton = styled.p<{
 
   @media (max-width: 600px) {
     font-size: 16px;
+  }
+
+  @media (max-width: 460px) {
+    margin: 30px 0;
   }
 `;
 

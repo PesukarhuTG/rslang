@@ -102,6 +102,12 @@ const GameStatisticHeader = styled.h2`
   @media (max-width: 760px) {
     font-size: 30px;
   }
+
+  @media (max-width: 460px) {
+    font-size: 25px;
+    line-height: 1.4;
+    padding-bottom: 10px;
+  }
 `;
 
 const GameScore = styled.p`

@@ -46,6 +46,10 @@ const Wrapper = styled.div`
   justify-content: center;
   gap: 20px;
   width: 100%;
+
+  @media (max-width: 460px) {
+    margin-top: 10px;
+  }
 `;
 
 const AudioContent = styled.div`
@@ -61,15 +65,25 @@ const WordBody = styled.div`
 `;
 
 const WordImage = styled.img`
+  display: block;
   height: 270px;
   width: auto;
+
+  @media (max-width: 460px) {
+    height: 200px;
+  }
 `;
 
 const WordDescription = styled.div`
   font-size: 30px;
   line-height: 1.5;
   text-align: center;
+
+  @media (max-width: 460px) {
+    font-size: 25px;
+  }
 `;
+
 const WordAudio = styled.img<{
   $isAnswer: boolean;
 }>`
@@ -93,6 +107,10 @@ const WordAudio = styled.img<{
   &:hover {
     cursor: pointer;
     scale: 0.95;
+  }
+
+  @media (max-width: 460px) {
+    margin: 0 5px;
   }
 `;
 const WrapperIcon = styled.div`

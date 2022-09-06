@@ -65,6 +65,5 @@ button[disabled] {
 }
 
 button[disabled]:hover {
-  background-color: var(--primary);
   cursor: default;
 }
