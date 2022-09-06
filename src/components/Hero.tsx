@@ -83,6 +83,10 @@ const HeroText = styled.div`
   display: flex;
   flex-direction: column;
   gap: 35px;
+
+  @media (max-width: 1100px) {
+    padding-right: 0;
+  }
 `;
 
 const HeroDescription = styled.p`
