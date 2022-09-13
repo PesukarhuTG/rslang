@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import MemoryCard from '../types/responses/Card';
 import getData from '../utils/getData';
 import Card from './Card';
+import Spinner from './Spinner';
 
 interface CardAlbumProps {
   group?: number;
@@ -15,6 +16,8 @@ const CardAlbum: React.FC<CardAlbumProps> = ({ group = 1, page = 1, level = 0 })
   useEffect(() => {
     getData('words', { group, page }).then(data => setAlbumPage(data));
   }, [group, page]);
+
+  if (!albumPage.length) return <Spinner />;
 
   return (
     <Album>
