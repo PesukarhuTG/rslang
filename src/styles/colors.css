@@ -1,0 +1,29 @@
+:root {
+  --main-background: #141f23;
+  --card-background: #0d171b;
+  --game-background: #0d171b;
+  --primary: #94d53d;
+  --primary-light: #fff;
+  --primary-dark: #0d171b;
+  --modal-background: rgba(0, 0, 0, 0.6);
+
+  --language-level-1: #94d53d;
+  --language-level-2: #e6f25f;
+  --language-level-3: #b0d6f3;
+  --language-level-4: #f5c69d;
+  --language-level-5: #bd8ec0;
+  --language-level-6: #fba2a2;
+  --language-level-7: #f388cf;
+
+  --btn-font-hover: #efefef;
+  --btn-primary: #94d53d;
+  --btn-primary-hover: #6ca322;
+  --btn-dark: #141f23;
+  --btn-dark-hover: #0d171b;
+  --answer-wrong: #f53e94;
+  --btn-wrong-hover: #c21e6b;
+  --answer-right: #94d53d;
+
+  --icon-learned: #94d53d;
+  --icon-difficult: #f53e94;
+}
