@@ -84,6 +84,23 @@ const AudioGame: React.FC<AudioGameProps> = ({ level = 0, page = null, gameEnd =
     setLoading(true);
   }, [loading, currentWord.audio]);
 
+  const userPressHandle = (event: KeyboardEvent) => {
+    const { key, code } = event;
+    event.preventDefault();
+    if (key === '1') AnswerClick(1);
+    if (key === '2') AnswerClick(2);
+    if (key === '3') AnswerClick(3);
+    if (key === '4') AnswerClick(4);
+    if (code === 'Space') nextRound();
+  };
+
+  useEffect(() => {
+    if (round < 20) {
+      window.addEventListener('keyup', userPressHandle);
+    }
+    return () => window.removeEventListener('keyup', userPressHandle);
+  });
+
   const AnswerClick = (index: number) => {
     setIsAnswer(true);
     if (words[translateArr[index - 1]].wordTranslate === currentWord.wordTranslate) {
@@ -154,6 +171,11 @@ const AudioGame: React.FC<AudioGameProps> = ({ level = 0, page = null, gameEnd =
 
       <Button label="Дальше" type="bordered" onClick={nextRound} />
 
+      <ControlDescription>
+        для выбора ответа можно использовать клавиши 1 2 3 4 на клавиатуре для перехода к следующему можно использовать
+        Space
+      </ControlDescription>
+
       <Modal
         visible={round < 20 ? false : true}
         onClose={modalClose}
@@ -204,6 +226,13 @@ const GameAnswers = styled.div`
   padding: 40px 30px;
   border-radius: 10px;
   background-color: var(--primary-dark);
+`;
+
+const ControlDescription = styled.p`
+  padding: 30px 0 10px;
+  font-size: 14px;
+  text-align: center;
+  opacity: 0.8;
 `;
 
 export default AudioGame;
